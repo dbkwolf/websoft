@@ -6,5 +6,5 @@
      with Java, I have less experience in knowing where to begin when starting a project. 
    - My knowledge within web is very limited to basic CSS, JavaScript and HTML. I made portfolio websites using
      templates and tailoring them to my needs. Aso created a website for previous projects.
-   - TIL that gitterbox existed. 
+   - TIL: that gitterbox existed; why tags are useful.
 4. Pushed.
