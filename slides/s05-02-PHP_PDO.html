@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>websoft</title>
+
+<!-- Mithril HTML Slideshow styles -->
+<link href="css/mithril-slideshow.css" rel="stylesheet" />
+
+<!-- Code formatting using highlight.js -->
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/tomorrow.css">
+<script src="js/highlight.pack.js"></script>
+
+<!-- Text formatting using Markdown through showdown.js -->
+<script src="js/showdown.min.js"></script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Software Development for the Web
+## PHP PDO and SQL
+### Mikael Roos
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Agenda
+
+* PHP PDO
+* SQL
+* Databases
+* CRUD
+* ORM
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#PHP PDO
+
+* PHP Data Objects (PDO)
+* Interface för att accessa olika databaser
+* Kräver specifik db-driver
+* Tex PDO_SQLITE
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Data access abstraction
+
+* Data access abstraction layer
+* Oavsett db - samma funktioner
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Database abstraction
+
+* INTE database abstraction
+* (skriva om SQL-satser baserat på db)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#PDO drivers som finns
+
+* IBM, MySQL/MariaDb, Oracle, SQL Server, mfl
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Koppla mot databas
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Data Source Name (DSN)
+
+```
+// Create a DSN for the database using its filename
+$fileName = __DIR__ . "/db/jetty.sqlite";
+$dsn = "sqlite:$fileName";
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Öppna databas
+
+```
+// Open the database file and catch the exception it it fails.
+try {
+    $db = new PDO($dsn);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Failed to connect to the database using DSN:<br>$dsn<br>";
+    throw $e;
+}
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Ställ frågan
+
+```
+// Prepare and execute the SQL statement
+$stmt = $db->prepare("SELECT * FROM Jetty");
+$stmt->execute();
+```
+
+* Skapa ett statment och därefter exekvera det.
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Hämta resultatet
+
+```
+// Get the results as an array with column names as array keys
+$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+print_r($res);
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Resultset i array
+
+<img alt="Resultset" src="https://dbwebb.se/image/snapvt15/pdo20-connect.png" style="width: 100%">
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Olika sätt hämta resultset
+
+* `PDO::FETCH_NUM`
+* `PDO::FETCH_ASSOC`, `PDO::FETCH_BOTH`
+* `PDO::FETCH_OBJ`, `PDO::FETCH_LAZY`
+* `PDO::FETCH_CLASS`, `PDO::FETCH_INTO`
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#PDO klasser
+
+* [PDO](http://php.net/manual/en/class.pdo.php)
+* [PDOStatement](http://php.net/manual/en/class.pdostatement.php)
+* [PDOException](http://php.net/manual/en/class.pdoexception.php)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Prepared statements
+
+* Kompilera SQL innan exekvering
+* Kompilera en gång, exekvera många
+* Bifoga parametrar
+* Parametrar behöver inte "quotas"
+* Skyddar SQL injection
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Prepared statements...
+
+```
+// Prepare the SQL statement
+$sql = "SELECT * FROM Jetty WHERE boatType LIKE ? OR boatEngine LIKE ?";
+$stmt = $db->prepare($sql);
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Prepared statements...
+
+```
+// Prepare the SQL statement
+$sql = "SELECT * FROM Jetty WHERE boatType LIKE ? OR boatEngine LIKE ?";
+$stmt = $db->prepare($sql);
+
+// Execute the SQL statement using parameters to replace the ?
+$params = [$search, $search];
+$stmt->execute($params);
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Bra att ha
+
+* [PDO::lastInsertId()](http://php.net/manual/en/pdo.lastinsertid.php)
+* [PDO::errorInfo()](http://php.net/manual/en/pdo.errorInfo.php)
+* [PDOStatement::rowCount()](http://php.net/manual/en/pdostatement.rowcount.php)
+* [PDOStatement::errorInfo()](http://php.net/manual/en/pdostatement.errorinfo.php)
+* [PDOStatement::debugDumpParams()](http://php.net/manual/en/pdostatement.debugdumpparams.php)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#SQL injections
+
+<img alt="sql injection" src="img/exploits_of_a_mom.png" style="width: 100%">
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#SQL injections...
+
+```
+search.php?search=%buster%
+search.php?search=1+UNION+(SELECT+1,1,1,user,password,email+FROM+Users)--
+```
+
+```
+$sql = "SELECT * FROM Jetty WHERE boatType LIKE $search OR boatEngine LIKE $search";
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Säkerhetshål?
+
+* Kan du hitta säkerhetshål i exemplet?
+* SQL injection?
+* XSS?
+* CSRF?
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Om CRUD
+
+* Create, Read, Update, Delete
+* Vanligt sätt att jobba mot databaser
+* Vanlig formulärhanering
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Testkör exemplet
+
+* [Exempel](https://dbwebb.se/repo/htmlphp/example/pdo-sqlite/)
+* [Källkod](https://github.com/dbwebb-se/htmlphp/tree/master/example/pdo-sqlite)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Minns
+
+> "Lös alltid det översta felet först och lös ett fel i taget."
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Last words
+
+* Questions on that?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+</script>
+
+
+
+<!-- include essential js-script -->
+<script src="js/mithril.min.js"></script>
+<script src="js/mithril-slideshow.js"></script>

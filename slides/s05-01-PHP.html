@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>websoft</title>
+
+<!-- Mithril HTML Slideshow styles -->
+<link href="css/mithril-slideshow.css" rel="stylesheet" />
+
+<!-- Code formatting using highlight.js -->
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/tomorrow.css">
+<script src="js/highlight.pack.js"></script>
+
+<!-- Text formatting using Markdown through showdown.js -->
+<script src="js/showdown.min.js"></script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Software Development for the Web
+## PHP
+### Mikael Roos
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Agenda
+
+* About PHP
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# PHP
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# PHP
+
+* (Serverside) skriptspråk
+* Interpretator
+* Interpreterande språk
+* Dynamisk webbsida (servergenererad)
+* Koppla databas
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# PHP i HTML
+
+```html
+<!doctype html>
+<html>
+<title><?php echo $title; ?></title>
+```
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet
+
+* Du skriver in en webblänk (URL) i webbläsaren (eller klickar på en webblänk)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet...
+
+* Webbläsaren skickar en HTTP Request i enlighet med din URL
+* Typ: Hämta webbsidan a.php på en server...
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet...
+
+* Webbservern tar emot HTTP Request och ser om det går att mappa mot en lokal resurs.
+* Webbservern letar i det filsystem som den känner till, dvs katalogen htdocs/
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet...
+
+* Webbservern hittar resursen a.php och ser att den skall processas som en PHP-fil.
+* Webbservern processar filen med hjälp av PHP-interpretatorn och resultatet blir en HTML-sida (eller annan resurs, beror på headers).
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet...
+
+* Webbservern förbereder ett svar, ett HTTP Response med statuskod:
+    * 200 om resursen hittades
+    * 404 om resursen inte hittades
+    * 500 om något gick fel när resursen processades
+* Webbservern skickar tillbaka HTTP Response.
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet...
+
+* Webbläsaren tar emot HTTP Response och parsar det.
+* Källkoden som mottogs kan synas via högerklicka-visa-källkod
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Flödet...
+
+* Webbläsaren tar emot HTTP Response och parsar det.
+* Finns det extra resurser så hämtas de också, via en separat HTTP Request (tex stylesheet, javascript, bilder).
+* Alla resurser appliceras i den resulterande webbsidan
+* Facit för den resulterande sidan och alla resurser syns i F12/devtools.
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# PHP programmeringsspråk
+
+* Dynamisk typning (jämför statisk typning)
+* Multi-paradigm language
+    * Skript
+    * Strukturerad/procedurell
+    * Objektorienterat
+    * Funktionell programmering
+* CLI-skript (terminalen)
+
+</script>
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Ordning och struktur
+
+> During the 2010s there have been increased efforts towards standardisation and code sharing in PHP applications by projects such as PHP-FIG in the form of PSR-initiatives as well as Composer dependency manager and the Packagist repository.
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Popularitet [TIOBE](http://www.tiobe.com/tiobe-index/)
+
+* Plats 7 (7/6) på TIOBE aug 2018
+* Java, C, C++, C#, Python, Visual Basic .NET, PHP, JavaScript, SQL
+
+</script>
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+    
+<img alt="W3Techs" src="img/w3techs-sep-2018.png" style="width: 70%">
+
+Popularitet [W3Techs](https://w3techs.com/technologies/overview/programming_language/all).
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Tolka en undersökning
+
+> PHP is used by 83,5% of all the websites whose server-side programming language we know.
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# Programmeringsspråk A är bättre än B
+
+* Kan man uttrycka sig så?
+* Är det så svart och vitt?
+* Eller beror det på?
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+# HTML + CSS + PHP
+
+* Få dem att fungera tillsammans. På ett vackert sätt. Vacker kod. Det är utmaningen.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Last words
+
+* Questions on that?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+</script>
+
+
+
+<!-- include essential js-script -->
+<script src="js/mithril.min.js"></script>
+<script src="js/mithril-slideshow.js"></script>

@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>websoft</title>
+
+<!-- Mithril HTML Slideshow styles -->
+<link href="css/mithril-slideshow.css" rel="stylesheet" />
+
+<!-- Code formatting using highlight.js -->
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/tomorrow.css">
+<script src="js/highlight.pack.js"></script>
+
+<!-- Text formatting using Markdown through showdown.js -->
+<script src="js/showdown.min.js"></script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Software Development for the Web
+## JavaScript Core
+### Mikael Roos
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Agenda
+
+* Utvecklingsmiljö
+* Om JavaScript Core (ES5)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Utvecklingsmiljö
+
+* I webbläsarens console
+* Devtools debugger
+* Interaktiv node i terminalen
+* [codepen.io](https://codepen.io/pen/)
+
+</script>
+
+
+
+<!-- Slide -->
+<script data-role="slide" data-markdown type="text/html">
+#Kodstandard
+
+* [npm javascript-style-guide](https://www.npmjs.com/package/javascript-style-guide)
+* jscs, jshint -> eslint
+* uglifyjs -> uglifyes
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Språket JavaScript
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Lexikalisk struktur
+
+* Skiljer små/stora bokstäver
+* Tab/mellanslag
+* Semikolon valfria
+* Kommentarer // och /* */
+* Tänk minifiering
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Identifierare
+
+En identifierare börjar med en bokstav a-z, A-Z, understreck _ eller dollartecken $ och följs därefter av bokstav a-z, A-Z, understreck _, dollartecken $ eller siffror 0-9.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Identifierare...
+
+```
+$
+_
+moped42
+$something
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Literaler
+<img src="img/literaler.png" width="1024px" />
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`typeof()`
+
+```
+> typeof(4.2)
+'number'
+> typeof(42)
+'number'
+> typeof(4.2)
+'number'
+> typeof("moped")
+'string'
+> typeof('moped')
+'string'
+> typeof(true)
+'boolean'
+> typeof(false)
+'boolean'
+> typeof(null)
+'object'
+> typeof(undefined)
+'undefined'
+> typeof(/./)
+'object'
+> typeof([])
+'object'
+> typeof({})
+'object'
+> typeof(function () {})
+'function'
+```
+
+</script>
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Kodexempel
+<pre data-code="c100"></pre>
+</script>
+
+<script id="c100" data-role="code" data-language="javascript" type="text/html">
+/**
+ * This is some basics in JavaScript.
+ */
+
+// One line comment
+
+var someValue = 42;
+var someString = "42";
+
+if (someValue == "42") {
+    console.log("Yes, its 42 alright.");
+}
+
+if (someString === "42") {
+    console.log("Yes, its 42 alright.");
+}
+
+// Short syntax for an if statement
+var res = someValue === 42 ? 42 : "42";
+console.log(res);
+
+var i = 0;
+while (i < 42) {
+    i++;
+}
+console.log(i);
+
+for (i = 37; i <= 42; i++) {
+    console.log(i);
+}
+
+function alpha(x, y) {
+    return x + y;
+}
+
+console.log(alpha(40, 2));
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Datatyper och objekt
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Primitiva värden
+
+* Boolska variabler `true` och `false`.
+* Numeriska värden `42` och `4.2`.
+* Strängar `"mumin"` och `'mumin'`.
+* Icke-värden `null` och `undefined`.
+</script>
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt
+
+* `[]` `{}` `//` typeof() ger "object"
+* `function(){}` typeof() ger "function"
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt...
+
+* `[]` ger instanceof `Array`, `Object`
+* `{}` ger instanceof `Object`
+* `//` ger instanceof `RegExp`, `Object`
+* `function(){}` ger instanceof `Function`, `Object`
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objektbaserade typer
+
+* `Number`, `String`, `Boolean`
+* `Object`, `Array`, `Function`, `RegExp`
+* Globala objekt som exponerar metoder och properties
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`Number`
+
+* Objektet `Number` innehåller
+    * `Number.isInteger`, `Number.isNaN`
+* Objektet `Math` innehåller
+    * `Math.PI`, `Math.random`, ...
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`Number`...
+
+```
+> 1/0
+Infinity
+> 0/0
+NaN
+> 0/1
+0
+
+> NaN > Infinity
+false
+> Infinity > NaN
+false
+> Infinity < (Infinity + 1)
+false
+> Infinity + 1
+Infinity
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`Number`...
+
+* Kika på [`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) och [`Math`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`String`
+
+* Använd literalen
+* Konkatenera med + och +=
+* Strängfunktioner `trim`,  `split`, `substr` mfl i [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Typkonvertering
+
+```
+> 1 + 1
+2
+> "1" + 1
+'11'
+> 1 + "1"
+'11'
+> 1 + true
+2
+> "1" + true
+'1true'
+> true + 1
+2
+> true + 1 + NaN
+NaN
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Typkonvertering...
+
+* Konvertera strängar till nummer med `parseInt()` och `parseFloat()`
+* Konvertera nummer till sträng med `toString()`
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Typkonvertering...
+
+```
+> parseInt("42 mopeder")
+42
+> a = 42
+42
+> a.toString()
+'42'
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`Boolean`
+
+* Använd literalen
+* false - false, 0, empty string (""), NaN, null, undefined
+* true - allt annat
+* Omvandla godtyckligt värde till boolean med !!
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#`Boolean`...
+
+* Omvandla godtyckligt värde till boolean med !!
+
+```
+> !42
+false
+> !!42
+true
+> !0
+true
+> !!0
+false
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Jämför värde och typ
+
+* Skillnad mellan == och ===
+* != och !==
+* Använd === och !===
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Variabel deklarationer
+<pre data-code="c20"></pre>
+</script>
+
+<script id="c20" data-role="code" data-language="javascript" type="text/html">
+//Like this
+var variable1 = "Hello World!";
+var variable2 = "Testing...";
+var variable3 = 42;
+var variable4;
+
+// or like this
+var variable1 = "Hello World!",
+    variable2 = "Testing...",
+    variable3 = 42,
+    variable4;
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Om arrayer
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Array
+<pre data-code="c8"></pre>
+</script>
+
+<script id="c8" data-role="code" data-language="javascript" type="text/html">
+> var notMuch = [];
+> var course = ['htmlphp', 'oophp', 'phpmvc', 'javascript'];
+
+> notMuch.length
+0
+> course.length
+4
+> course[0]
+'htmlphp'
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Array extend
+<pre data-code="c81"></pre>
+</script>
+
+<script id="c81" data-role="code" data-language="javascript" type="text/html">
+> course[9] = "mobile"
+'mobile'
+> course.length
+10
+> course[8]
+undefined
+> course[9]
+'mobile'
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Array delete/truncate
+<pre data-code="c82"></pre>
+</script>
+
+<script id="c82" data-role="code" data-language="javascript" type="text/html">
+> course.length = 4
+4
+> course.length
+4
+> course[9]
+undefined
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Array loop
+<pre data-code="c83"></pre>
+</script>
+
+<script id="c83" data-role="code" data-language="javascript" type="text/html">
+for(i = 0; i < course.length; i++) {
+    console.log(course[i]);
+}
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Array metoder
+<pre data-code="c84"></pre>
+</script>
+
+<script id="c84" data-role="code" data-language="javascript" type="text/html">
+> course.map(function(x) { return x.toUpperCase() })
+[ 'HTMLPHP', 'OOPHP', 'PHPMVC', 'JAVASCRIPT' ]
+> course.pop()
+'javascript'
+> course.reverse()
+[ 'phpmvc', 'oophp', 'htmlphp' ]
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Array
+
+* [Se manualsidan för array-funktioner](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+* [Kika på exempelprogrammet](http://dbwebb.se/javascript/core/boulder-dash-with-arrays/)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Lite om funktioner
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (1)
+<pre data-code="c1"></pre>
+</script>
+
+<script id="c1" data-role="code" data-language="javascript" type="text/html">
+// Traditionellt sätt, globalt scope
+// att jämföra med C/C++, PHP.
+function square (x) { 
+    return x*x;
+}
+val = square(2);
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (2)
+<pre data-code="c2"></pre>
+</script>
+
+<script id="c2" data-role="code" data-language="javascript" type="text/html">
+// Funktion expression, 
+// funktionen tilldelas en variabel
+var square = function (x) {
+    return x*x;
+};
+val = square(2);
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (3)
+<pre data-code="c3"></pre>
+</script>
+
+<script id="c3" data-role="code" data-language="javascript" type="text/html">
+// Namnlös funktion som används 
+// som eventhanterare, function expression
+element.onclick = function () {
+    alert('Hello');
+};
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (4)
+<pre data-code="c4"></pre>
+</script>
+
+<script id="c4" data-role="code" data-language="javascript" type="text/html">
+// Variant på namnlös funktion som
+// eventhanterare som skickas som 
+// parameter i en funktion.
+element.addEventListener("click", function () {
+    alert('Hello');
+});
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (5)
+<pre data-code="c40"></pre>
+</script>
+
+<script id="c40" data-role="code" data-language="javascript" type="text/html">
+// En självexekverande funktion med ett
+// function expression 
+(function() {
+    // Kod
+})();
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (6)
+<pre data-code="c41"></pre>
+</script>
+
+<script id="c41" data-role="code" data-language="javascript" type="text/html">
+// Argument
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+sum(1, 2, 3); // returnerar 6
+sum(1, 2);    // c undefined, returnerar NaN
+</script>
+
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (7)
+<pre data-code="c42"></pre>
+</script>
+
+<script id="c42" data-role="code" data-language="javascript" type="text/html">
+// Default argument
+function sum(a, b, c) {
+  a = a || 0;
+  b = b || 0;
+  c = c || 0;
+  return a + b + c;
+}
+
+sum(1, 2, 3); // returnerar 6
+sum(1, 2);    // returnerar 3
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Funktioner (8)
+<pre data-code="c43"></pre>
+</script>
+
+<script id="c43" data-role="code" data-language="javascript" type="text/html">
+// Arrayen arguments
+function sum() {
+  var i, sum = 0;
+  
+  for(i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  
+  return sum;
+}
+
+sum(1, 2, 3);           // returnerar 6
+sum(1, 2, 3, 4, 5, 6);  // returnerar 21
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Om Objekt
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt (literal)
+
+* Ett objekt kan vara många saker och betyda olika saker beroende på sammanhanget.
+* En samling namngivna värden, properties
+* Key/value array
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt
+<pre data-code="c5"></pre>
+</script>
+
+<script id="c5" data-role="code" data-language="javascript" type="text/html">
+var myBall = {};
+ 
+myBall.image = 'http://dbwebb.se/img/black_ball_64_64.png';
+myBall.position = {x:10, y:10}
+ 
+console.log(myBall.position.x); // prints out 10
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt mutable
+<pre data-code="c61"></pre>
+</script>
+
+<script id="c61" data-role="code" data-language="javascript" type="text/html">
+myBall.position.X = 27; // Property not exists, is created
+
+console.log('The x-position is: ' + myBall.position.x);
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt metod/property
+<pre data-code="c6"></pre>
+</script>
+
+<script id="c6" data-role="code" data-language="javascript" type="text/html">
+myBall.move = function(x, y) {
+    this.x = x;
+    this.y = y;
+};
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt this
+<pre data-code="c7"></pre>
+</script>
+
+<script id="c7" data-role="code" data-language="javascript" type="text/html">
+/* Draw element in HTML using access to this */
+myBall.HTMLelement = document.getElementById('ball');
+
+myBall.draw = function () {
+    this.HTMLelement.style.backgroundImage = 'url(' + this.image + ')';
+    this.HTMLelement.style.top = this.position.y + 'px';
+    this.HTMLelement.style.left = this.position.x + 'px';
+    console.log('Drawing ball.');
+}
+
+myBall.draw();
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt this, event
+<pre data-code="c71"></pre>
+</script>
+
+<script id="c71" data-role="code" data-language="javascript" type="text/html">
+/* This is the HTML element, not myBall */
+myBall.HTMLelement.addEventListener('click', function (event) {
+    console.log('Clicked on: ' + event.clientX + ' x ' + event.clientY);
+    console.log(this);
+});
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt kopiering (shallow)
+<pre data-code="c72"></pre>
+</script>
+
+<script id="c72" data-role="code" data-language="javascript" type="text/html">
+> a = {x: 1}
+{ x: 1 }
+> b = a
+{ x: 1 }
+---------------------------------
+> b.x = 2
+2
+> a
+{ x: 2 }
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt kopiering (clone)
+<pre data-code="c73"></pre>
+</script>
+
+<script id="c73" data-role="code" data-language="javascript" type="text/html">
+> a = {x: 1}
+{ x: 1 }
+> b = {}
+{}
+> Object.assign(b, a)
+{ x: 1 }
+> c = Object.assign({}, a)
+{ x: 1 }
+---------------------------------
+> a
+{ x: 1 }
+> b
+{ x: 1 }
+> c
+{ x: 1 }
+---------------------------------
+> b.x = 2
+2
+> c.x = 3
+3
+---------------------------------
+> a
+{ x: 1 }
+> b
+{ x: 2 }
+> c
+{ x: 3 }
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+##[Exempelprogram med boll](http://dbwebb.se/javascript/core/pushing-the-ball/)
+
+Kika i debuggern.
+</script>
+
+
+
+
+
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Prototype och arv?
+
+* Glöm OO
+* Prototype-baserad programmering
+* ES6 klasser
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Frågor på det?
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+</script>
+
+
+
+
+
+
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Scope
+<pre data-code="c9"></pre>
+</script>
+
+<script id="c9" data-role="code" data-language="javascript" type="text/html">
+function f1 (a) {
+    var b = a + 1;
+ 
+    function f2 (c) {
+        var d = c + 1; 
+        return a + b + c + d - 2; // a, b, c, d is available
+    }
+ 
+    return f2(b);
+}
+ 
+f1(10); // Returns 42
+f2(); // Not callable
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Closure
+<pre data-code="c10"></pre>
+</script>
+
+<script id="c10" data-role="code" data-language="javascript" type="text/html">
+// Example on closure where inner function has access to non-local variables
+window.accessToInner = (function() {
+    var a = 1;
+ 
+    function inner (b) {
+        a += b;
+        return a;
+    }
+ 
+    return inner;
+})();
+ 
+ 
+accessToInner(1) // returns 2
+accessToInner(1) // returns 3
+accessToInner(1) // returns 4
+accessToInner(1) // returns 5
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Siaf, iife/iffy
+<pre data-code="c11"></pre>
+</script>
+
+<script id="c11" data-role="code" data-language="javascript" type="text/html">
+myFunc = function() { console.log("hej"); }
+myFunc(); // calls the function
+ 
+myString = (function() { return "hej"; })()
+console.log(myString); // just the string
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Module pattern
+<pre data-code="c12"></pre>
+</script>
+
+<script id="c12" data-role="code" data-language="javascript" type="text/html">
+window.Mos = (function(window, undefined) {
+  var private, Mos = {};
+ 
+  /**
+   * Generate a random number.
+   * @param min the smallest possible number
+   * @param max the largest possible number
+   * @returns a random number where min >= number <= max
+   */
+  Mos.random = function (min, max) {
+    return Math.floor(Math.random()*(max+1-min)+min);
+  };
+ 
+  // Expose public methods
+  return Mos;
+})(window);
+ 
+Mos.random(1, 6);
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Event
+<pre data-code="c13"></pre>
+</script>
+
+<script id="c13" data-role="code" data-language="javascript" type="text/html">
+var button = document.getElementById('button');
+ 
+button.addEventListener('click', function () {
+    var colors = ['green', 'yellow', 'red', 'blue', 'pink'],
+        step = 0,
+ 
+    animateFunction = function () {
+        if (step === colors.length) {
+            button.style.backgroundColor = '';
+        } else {
+            button.style.backgroundColor = colors[step];
+            step += 1;
+            window.setTimeout(animateFunction, 500);
+        }
+    };
+ 
+    window.setTimeout(animateFunction, 500);
+});
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+##[Event exempelprogrammet](http://dbwebb.se/javascript/core/animate-using-setTimeout/)
+
+Kolla i devtools.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Kodstandard och valideringsverktyg
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Examples
+
+* Slideshow
+* Asteroids
+* Click on it
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# SVG
+
+* Example on how SVG can interact using JavaScript.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# more
+
+* downgrade, upgrade depending on browser support
+* js object model
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Last words
+
+* Questions on that?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+</script>
+
+
+
+<!-- include essential js-script -->
+<script src="js/mithril.min.js"></script>
+<script src="js/mithril-slideshow.js"></script>

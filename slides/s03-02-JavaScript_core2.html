@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>websoft</title>
+
+<!-- Mithril HTML Slideshow styles -->
+<link href="css/mithril-slideshow.css" rel="stylesheet" />
+
+<!-- Code formatting using highlight.js -->
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/tomorrow.css">
+<script src="js/highlight.pack.js"></script>
+
+<!-- Text formatting using Markdown through showdown.js -->
+<script src="js/showdown.min.js"></script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Software Development for the Web
+## JavaScript Core, continued
+### Mikael Roos
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Agenda
+
+* Mer om JavaScript core
+* Scope
+* Hoisting
+* Closure
+* Module pattern
+* ES6 konstruktioner
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#strict mode
+
+* `"use strict";`
+* Filnivå men föredragsvis på funktionsnivå.
+* Kastar error istället för misslyckas i tysthet
+* Förenkla för intern optimering
+* Bort med syntax som kan komma att försvinna
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Scope
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Hoisting
+<pre data-code="c9"></pre>
+</script>
+
+<script id="c9" data-role="code" data-language="javascript" type="text/html">
+// Not like this
+function doit() {
+    var a = 1;
+ 
+    for(var i = 0; i < 42; i++) {
+        var b = "hej";
+    }
+}
+ 
+// Do like this (hoisting and function scope)
+function doit() {
+    var a = 1;
+    var b;
+    var i;
+ 
+    for(i = 0; i < 42; i++) {
+        b = "hej";
+    }
+}
+ 
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Hoisting...
+<pre data-code="c91"></pre>
+</script>
+
+<script id="c91" data-role="code" data-language="javascript" type="text/html">
+// Hoists declarations
+// But not assignments
+function func() {
+    if (true) {
+        var tmp = 123;
+    }
+    console.log(tmp); // 123
+}
+
+
+// Hoisting declarations
+function func() {
+    var tmp;          // declaration is moved up to the top
+    if (true) {
+        tmp = 123;    // assignment remains
+    }
+    console.log(tmp); // 123 variable function scoped
+}
+</script>
+
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Scope function
+<pre data-code="c10"></pre>
+</script>
+
+<script id="c10" data-role="code" data-language="javascript" type="text/html">
+// Inner functions can access
+// outer function variables
+function doit() {
+    var a = 1;
+ 
+    function again() {
+        var b = 2;
+        console.log(a + b);
+    }
+
+    again(); // 3
+}
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Scope closure
+<pre data-code="c12"></pre>
+</script>
+
+<script id="c12" data-role="code" data-language="javascript" type="text/html">
+// Inner functions is always executing
+// within its outer function,
+// creating a closure
+function doit() {
+    var a = 1;
+ 
+    function again() {
+        var b = 2;
+        a = a + b;
+        return a;
+    }
+
+    return again;
+}
+
+myAgain = doit();
+myAgain(); // a === 3
+myAgain(); // a === 5
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Function as variable (siaf)
+<pre data-code="c131"></pre>
+</script>
+
+<script id="c131" data-role="code" data-language="javascript" type="text/html">
+// Function definition through
+//  function expression
+myFunc = function() { console.log("hej"); }
+myFunc;   // A Function object
+myFunc(); // Calls the function which returns "hej"
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Siaf, iife/iffy
+<pre data-code="c132"></pre>
+</script>
+
+<script id="c132" data-role="code" data-language="javascript" type="text/html">
+// Function expression
+myFunc = function() { console.log("hej"); }
+
+// Immediate invoking function expression
+// Self invoking anonymous function
+//  leaving just the return value
+myString = (function() { return "hej"; })()
+console.log(myString); // just the string "hej"
+
+// or just...
+(function() { return "hej"; })();
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Siaf, iife/iffy...
+<pre data-code="c13"></pre>
+</script>
+
+<script id="c13" data-role="code" data-language="javascript" type="text/html">
+// or just...
+(function() { return "hej"; })();
+
+// The construct, bit by bit
+function() { return "hej"; }     // Function expression
+(function() { return "hej"; })   // Wrap it within ()
+(function() { return "hej"; })() // Add () to call it
+
+// Sometimes called with arguments, for scope
+(function(win, doc) { /* body */ })(window, document)
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Siaf/iife till closure
+<pre data-code="c14"></pre>
+</script>
+
+<script id="c14" data-role="code" data-language="javascript" type="text/html">
+// Do not pollute the global scope
+// Create a closure to run the code in
+(function() {
+    var a;
+
+    // Do all stuff
+
+})();
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Siaf/iife till closure och modul pattern
+<pre data-code="c15"></pre>
+</script>
+
+<script id="c15" data-role="code" data-language="javascript" type="text/html">
+window.mos = (function() {
+    var a = 4;
+    var b = 42;
+    var c = function() { return "hej"; };
+
+    return {
+        some:   a,
+        thing:  2,
+        other:  function() { return b; },
+        ing:    function() { return c(); },
+    }
+})();
+
+window.mos.thing; // 2
+window.mos.ing(); // "hej"
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Variationer på modul pattern
+
+* Returnera objekt med publikt api
+* Resten privat i closuret
+* Alla delar som returneras lever i sitt closure när de exekveras
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#ES6 konstruktioner
+
+* Template literal
+* `var` kontra `let`
+* `const`
+* Spread operator `...`
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Template literal
+
+```
+const firstName = 'Jane';
+console.log(`Hello ${firstName}!
+How are you
+today?`);
+
+// Output:
+// Hello Jane!
+// How are you
+// today?
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#var och let
+
+* `var` ES5 och function scope (hoisting)
+* `let` ES6 och block scope
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#let/const scope
+
+```
+// Blockscope
+function doit(x) {
+    if (x) {
+        let tmp = x;
+    }
+    console.log(tmp); // ReferenceError: tmp is not defined
+}
+
+
+// Shadow variables when blockscope
+function func() {
+  const foo = 5;
+  if (···) {
+     const foo = 10;   // shadows outer `foo`
+     console.log(foo); // 10
+  }
+  console.log(foo); // 5
+}
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#let/const visibility
+
+```
+// Visible for inner functions
+// (blockscope)
+function doit() {
+    let a = 1;
+
+    function b() {
+        let b = a + 1;
+        return b;
+    }
+
+    return b;
+}
+c = doit();
+c();        // 2
+
+
+// Shadow variables when blockscope
+function func() {
+  const foo = 5;
+  if (···) {
+     const foo = 10;   // shadows outer `foo`
+     console.log(foo); // 10
+  }
+  console.log(foo); // 5
+}
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Constants
+
+* Immutable
+* Block scope
+
+```
+// Immutable
+const foo = 'abc';
+foo = 'def'; // TypeError
+
+// Scoped to the block
+function func() {
+    if (true) {
+        const tmp = 123;
+    }
+    console.log(tmp); // ReferenceError: tmp is not defined
+}
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Spread operator `...`
+
+* Turn array into its pieces
+
+```
+> Math.max(-1, ...[-1, 5, 11], 3)
+11
+
+> [1, ...[2,3], 4]
+[1, 2, 3, 4]
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Läs på
+
+* [ES5: Speaking JavaScript](http://speakingjs.com/)
+* [ES6: Exploring ES6](http://exploringjs.com/)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Last words
+
+* Questions on that?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+</script>
+
+
+
+<!-- include essential js-script -->
+<script src="js/mithril.min.js"></script>
+<script src="js/mithril-slideshow.js"></script>

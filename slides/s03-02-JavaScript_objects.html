@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>websoft</title>
+
+<!-- Mithril HTML Slideshow styles -->
+<link href="css/mithril-slideshow.css" rel="stylesheet" />
+
+<!-- Code formatting using highlight.js -->
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/tomorrow.css">
+<script src="js/highlight.pack.js"></script>
+
+<!-- Text formatting using Markdown through showdown.js -->
+<script src="js/showdown.min.js"></script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Software Development for the Web
+## JavaScript Core, Objects
+### Mikael Roos
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Agenda
+
+* Om objekt i JavaScript
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt (literal)
+
+* Ett objekt kan vara många saker och betyda olika saker beroende på sammanhanget.
+* En samling namngivna värden, properties
+* Key/value array
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt (klasser)
+
+* ES6 har "traditionellt" klassbegrepp
+* Modulbegrepp
+* Arv
+* Syntactical sugar
+* [Exempel](https://github.com/janaxs/blackjack/blob/master/src/card/card.js)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt
+
+* Prototyp baserat
+* Konstruktorfunktion
+* .prototype
+* Utöka objekt i form av objektkedja
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt literal
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Ett object
+<pre data-code="c1"></pre>
+</script>
+
+<script id="c1" data-role="code" data-language="javascript" type="text/html">
+// Just an example object
+defaultConfig = {
+    server: "https://dbwebb.se/",
+    speed: "fast",
+    security: "medium"
+}
+
+
+
+
+// Access
+> defaultConfig.server
+'https://dbwebb.se/'
+> defaultConfig.Server
+undefined
+
+
+
+
+// Mutable
+> defaultConfig.server2 = "http://archive.dbwebb.se"
+'http://archive.dbwebb.se'
+> defaultConfig
+{ server: 'https://dbwebb.se/',
+  speed: 'fast',
+  security: 'medium',
+  server2: 'http://archive.dbwebb.se' }
+> 
+
+
+
+
+// Delete properties
+> defaultConfig.server2 = undefined
+undefined
+> defaultConfig
+{ server: 'https://dbwebb.se/',
+  speed: 'fast',
+  security: 'medium',
+  server2: undefined }
+> delete defaultConfig.server2
+true
+> defaultConfig
+{ server: 'https://dbwebb.se/',
+  speed: 'fast',
+  security: 'medium' }
+> 
+
+
+
+</script>
+
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt kopiering (shallow)
+<pre data-code="c72"></pre>
+</script>
+
+<script id="c72" data-role="code" data-language="javascript" type="text/html">
+> a = {x: 1}
+{ x: 1 }
+> b = a
+{ x: 1 }
+---------------------------------
+> b.x = 2
+2
+> a
+{ x: 2 }
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt kopiering (clone)
+<pre data-code="c73"></pre>
+</script>
+
+<script id="c73" data-role="code" data-language="javascript" type="text/html">
+> a = {x: 1}
+{ x: 1 }
+> b = {}
+{}
+> Object.assign(b, a)
+{ x: 1 }
+> c = Object.assign({}, a)
+{ x: 1 }
+---------------------------------
+> a
+{ x: 1 }
+> b
+{ x: 1 }
+> c
+{ x: 1 }
+
+---------------------------------
+> b.x = 2
+2
+> c.x = 3
+3
+
+---------------------------------
+> a
+{ x: 1 }
+> b
+{ x: 2 }
+> c
+{ x: 3 }
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Deep and shallow copy
+<pre data-code="c2"></pre>
+</script>
+
+<script id="c2" data-role="code" data-language="javascript" type="text/html">
+// Deep object
+stuff = {
+    level1: 1,
+    level2: [2],
+    level3: { array: [3] }
+}
+
+// Access
+> stuff.level1
+1
+> stuff.level2[0]
+2
+> stuff.level3.array[0]
+3
+
+
+
+
+// Shallow copy
+> sameStuff = stuff
+
+> sameStuff.level1 = 11
+> sameStuff.level2[0] = 22
+> sameStuff.level3.array[0] = 33
+
+> sameStuff
+{ level1: 11, level2: [ 22 ], level3: { array: [ 33 ] } }
+> stuff
+{ level1: 11, level2: [ 22 ], level3: { array: [ 33 ] } }
+
+
+
+
+// Deep copy step 1 (resetting stuff to defaults)
+> newStuff = {}
+> Object.assign(newStuff, stuff)
+> newStuff
+{ level1: 1, level2: [ 2 ], level3: { array: [ 3 ] } }
+
+> newStuff.level1 = 11
+> newStuff.level2[0] = 22
+> newStuff.level3.array[0] = 33
+
+> newStuff
+{ level1: 11, level2: [ 22 ], level3: { array: [ 33 ] } }
+> stuff
+{ level1: 1, level2: [ 22 ], level3: { array: [ 33 ] } }
+
+
+
+
+// Really deep clone (exceptions on non JSON literals)
+> cloneStuff = JSON.parse(JSON.stringify(stuff))
+> cloneStuff
+{ level1: 1, level2: [ 2 ], level3: { array: [ 3 ] } }
+
+> cloneStuff.level1 = 11
+> cloneStuff.level2[0] = 22
+> cloneStuff.level3.array[0] = 33
+
+> cloneStuff
+{ level1: 11, level2: [ 22 ], level3: { array: [ 33 ] } }
+> stuff
+{ level1: 1, level2: [ 2 ], level3: { array: [ 3 ] } }
+
+
+
+
+</script>
+
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Merging objects
+<pre data-code="c3"></pre>
+<pre data-code="c31"></pre>
+</script>
+
+<script id="c3" data-role="code" data-language="javascript" type="text/html">
+// Some objects
+a = { a: 1, b: 2 }
+b = { b: "2" }
+c = { c: 3 }
+</script>
+
+
+
+<script id="c31" data-role="code" data-language="javascript" type="text/html">
+// Merge them (clearing them before each example)
+> Object.assign(a, c)
+{ a: 1, b: 2, c: 3 }
+
+> Object.assign(a, b)
+{ a: 1, b: '2' }
+
+> Object.assign(b, a)
+{ b: 2, a: 1 }
+
+> Object.assign(a, b, c)
+{ a: 1, b: '2', c: 3 }
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt återanvändning
+<pre data-code="c4"></pre>
+</script>
+
+<script id="c4" data-role="code" data-language="javascript" type="text/html">
+// Object som mall för andra objekt
+person = {
+    name: null,
+
+    description: function () {
+        return "Hi, I'm " + this.name;
+    }
+}
+
+
+// Create an object, using a "prototype" object
+> mos = Object.create(person)
+> mos.name = "MegaMos"
+> mos.description
+[Function]
+> mos.description()
+'Hi, I\'m MegaMos'
+
+
+// Create another object, using same "prototype"
+> mumin = Object.create(person)
+> mumin.name = "Mumintrollet"
+'Mumintrollet'
+> mumin.description()
+'Hi, I\'m Mumintrollet'
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Tänk på
+
+* Avslutande , mellan properties
+* JSON objekt grunden i REST
+* JSON (null, boolean, string, number, array, object)
+* JSON stöder ej Date, RegExp, funktioner, undefined...
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt prototyp
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt med konstruktor
+<pre data-code="c5"></pre>
+</script>
+
+<script id="c5" data-role="code" data-language="javascript" type="text/html">
+// An object constructor function
+function Person(name) {
+    this.name = name || "John/Jane Doe";
+
+    this.description = function () {
+        return "Hi, I'm " + this.name;
+    }
+}
+
+
+// Create an instance of the object
+> mos = new Person()
+Person { name: 'John/Jane Doe', description: [Function] }
+> mos.name = "MegaMos"
+'MegaMos'
+> mos.description()
+'Hi, I\'m MegaMos'
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt prototype
+<pre data-code="c6"></pre>
+</script>
+
+<script id="c6" data-role="code" data-language="javascript" type="text/html">
+// Object sharing implementation
+function Person(name) {
+    this.name = name || "John/Jane Doe";
+}
+
+Person.prototype.description = function () {
+    return "Hi, I'm " + this.name;
+}
+
+
+// Create an instance of the object
+> mos = new Person("MegaMos")
+Person { name: 'MegaMos' }
+> mos.description
+[Function]
+> mos.description()
+'Hi, I\'m MegaMos'
+
+
+// mos is an instance of Person
+> mos instanceof Person
+true
+> mos instanceof Object
+true
+> typeof(mos)
+'object'
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#This och that
+<pre data-code="c9"></pre>
+</script>
+
+<script id="c9" data-role="code" data-language="javascript" type="text/html">
+// Object with method using this/that
+function Person(name, friends) {
+    this.name = name;
+    this.friends = friends;
+}
+
+Person.prototype.friendsList = function () {
+    message = this.friends.map(function(value) {
+        return this.name + " is friend with " + value;
+    })
+    return message;
+}
+
+
+// Check if it works... nop
+> mos = new Person("MegaMos", ["Mumintrollet", "Moped"])
+> mos.friendsList()
+[ 'undefined is friend with Mumintrollet',
+  'undefined is friend with Moped' ]
+
+
+// Use this that
+Person.prototype.friendsList = function () {
+    that = this;
+    message = this.friends.map(function(value) {
+        return that.name + " is friend with " + value;
+    })
+    return message;
+}
+
+
+// Check if it works... yep!
+> mos.friendsList()
+[ 'MegaMos is friend with Mumintrollet',
+  'MegaMos is friend with Moped' ]
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Objekt this, event
+<pre data-code="c71"></pre>
+</script>
+
+<script id="c71" data-role="code" data-language="javascript" type="text/html">
+/* this = HTMLelement, not myBall */
+myBall.HTMLelement.addEventListener('click', function (event) {
+    console.log('Clicked on: ' + event.clientX
+        + ' x ' + event.clientY
+    );
+    console.log(this);
+});
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Allmänt
+
+* Object som key value map
+* Object som "objektorientering"
+* JavaScripts prototypbaserade objektmodell
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+#Läs på
+
+* [ES5: Speaking JavaScript](http://speakingjs.com/)
+* 1\. Objects and Constructors
+* 17\. Objects and Inheritance
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Last words
+
+* Questions on that?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+</script>
+
+
+
+<!-- include essential js-script -->
+<script src="js/mithril.min.js"></script>
+<script src="js/mithril-slideshow.js"></script>
