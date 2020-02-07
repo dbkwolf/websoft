@@ -40,3 +40,19 @@ body {
   left: 100px;
   z-index: 2;
 }
+
+#shout {
+  position: absolute;
+  top: 68px;
+  left: 164px;
+  z-index: 2;
+  visibility: visible;
+}
+
+#fart {
+  position: absolute;
+  top: 120px;
+  left: 95px;
+  z-index: 2;
+  visibility:hidden;
+}

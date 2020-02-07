@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="favicon.ico">
 </head>
-<img id="kangaroo" src="img/kangaroo.png" onclick="kangarooJump()">
-<body>
+
+<body onload="setInterval(onTimerElapsed, 2000);">
 
 
 
@@ -21,6 +21,11 @@
     </nav>
 </header>
 
+<img id="kangaroo" src="img/kangaroo.png" onclick="kangarooJump()">
+<div id="kangarooing" style="display:none;">
+            <img id="shout" src="img/shout.png">
+</div>
+<img id="fart" src="img/fart.png">
 
 
 <article>
@@ -106,8 +111,9 @@ The HTTP protocol are the sets of rules that both the browser and server need to
 
 <footer>
     <hr>
-    <p>Provide a nice footer to your report.</p>
-</footer>
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  </footer>
 
 </article>
 
