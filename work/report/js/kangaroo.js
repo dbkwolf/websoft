@@ -1,10 +1,17 @@
-window.kangarooJump = function() {
+var kangaroo = document.getElementById('kangaroo');
 
+var myKangaroo = {
+  type: 'Marsupial', // Default value of properties
+  posx:  100, //not sure how to bind these to the position of the kangaroo img
+  posy: 100,
+  displayType: function() {  // Method which will display type of Animal
+    console.log(this.type);
+  },
+  jump: function(){
     var numRand = Math.floor(Math.random() * 501);
     var divsize = 50;
     var posx = (Math.random() * window.innerWidth - divsize).toFixed();
     var posy = (Math.random() * window.innerHeight - divsize).toFixed();
-    var kangaroo = document.getElementById('kangaroo');
     kangaroo.style.left = posx + "px";
     kangaroo.style.top = posy + "px";
 
@@ -19,7 +26,19 @@ window.kangarooJump = function() {
     var auxy = parseInt(posy) + 20;
     shout.style.left = aux+'px' ;
     shout.style.top = auxy +'px';
+  },
 
+  fart: function(){
+    document.getElementById('fart').style.visibility = "visible";
+     setTimeout(function(){ document.getElementById('fart').style.visibility = "hidden"; }, 3000);
+     var fartSound = new sound('media/0241.mp3');
+     fartSound.play();
+  }
+}
+
+
+window.clickOnKangaroo = function() {
+  myKangaroo.jump();
 }
 
 function onTimerElapsed() {
@@ -27,11 +46,8 @@ function onTimerElapsed() {
    kangarooing.style.display = kangarooing.style.display === 'none' ? 'block' : 'none';
 }
 
-function fart(){
-  document.getElementById('fart').style.visibility = "visible";
-   setTimeout(function(){ document.getElementById('fart').style.visibility = "hidden"; }, 3000);
-   var fartSound = new sound('media/0241.mp3');
-   fartSound.play();
+function startleKangaroo(){
+  myKangaroo.fart();
 }
 
 function sound(src) {

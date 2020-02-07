@@ -1,5 +1,3 @@
-
-
 var canvas = document.getElementById('flag-canvas');
 var germanyLink = document.getElementById('germany-link');
 var swedenLink = document.getElementById('sweden-link');
