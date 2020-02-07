@@ -46,11 +46,9 @@ Fix this Mikael
 
 1. Examination days and rest examination (book, update lecture plan and announce on Canvas)
 
-1. Publish about project setup & techniques (Canvas)
+1. Aid in creating project groups
 
-    1. Aid in creating project groups
-
-    1. Publish requirements on project
+1. Publish requirements on project
 
 1. Link to the slides (in Canvas)
 
