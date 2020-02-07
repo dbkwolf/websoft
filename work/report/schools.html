@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Schools Register</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+        <nav>
+            <a href="me.html">Me</a> |
+            <a href="report.html">Report</a> |
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+    
+    <ul>
+    </ul>
+    <select id="kommun-dropdown" class="dropdown" onchange="populateTable(event)">
+    <option value="0">--choose Kommun--</option>
+    </select>
+
+
+    <br>
+    <br>
+    <table id="skolenheter-table" class="table">
+      <thead>
+        <tr>
+          <th>Schoolname</th>
+          <th>Schoolcode</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/schools.js"></script>
+</html>

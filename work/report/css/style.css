@@ -1,5 +1,5 @@
 /*
- * Comments are written as C++ style. 
+ * Comments are written as C++ style.
  */
 html {
     overflow-y: scroll;
@@ -9,4 +9,27 @@ body {
     margin: 8px auto;
     background: #fff;
     width: 700px;
+}
+
+#skolenheter-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#skolenheter-table td, #skolenheter-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#skolenheter-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#skolenheter-table tr:hover {background-color: #ddd;}
+
+#skolenheter-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }
