@@ -8,7 +8,7 @@ var myKangaroo = {
     console.log(this.type);
   },
   jump: function() {
-    var numRand = Math.floor(Math.random() * 501);
+
     var divsize = 50;
     var posx = (Math.random() * window.innerWidth - divsize).toFixed();
     var posy = (Math.random() * window.innerHeight - divsize).toFixed();
@@ -16,16 +16,16 @@ var myKangaroo = {
     kangaroo.style.top = posy + "px";
 
     var shout = document.getElementById('shout');
-    var aux = parseInt(posx) + 64;
-    var auxy = parseInt(posy) - 32
-    shout.style.left = aux + 'px';
-    shout.style.top = auxy + 'px';
+    var shoutOffsetX = parseInt(posx) + 64;
+    var shoutOffsetY = parseInt(posy) - 32
+    shout.style.left = shoutOffsetX + 'px';
+    shout.style.top = shoutOffsetY + 'px';
 
-    var shout = document.getElementById('fart');
-    var aux = parseInt(posx) - 5;
-    var auxy = parseInt(posy) + 20;
-    shout.style.left = aux + 'px';
-    shout.style.top = auxy + 'px';
+    var fart = document.getElementById('fart');
+    var fartOffsetX = parseInt(posx) - 5;
+    var fartOffsetY = parseInt(posy) + 20;
+    fart.style.left = fartOffsetX + 'px';
+    fart.style.top = fartOffsetY + 'px';
   },
 
   fart: function() {
