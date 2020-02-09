@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Flag Colouring</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+
+<body onload="setInterval(onTimerElapsed, 2000);">
+  <header>
+    <nav>
+      <a href="me.html">Me</a> |
+      <a href="report.html">Report</a> |
+      <a href="about.html">About</a> |
+      <a href="schools.html">Fetch Schools</a> |
+      <a href="flags.html">Flag Colouring</a>
+    </nav>
+  </header>
+
+  <img id="kangaroo" src="img/kangaroo.png" onclick="clickOnKangaroo()">
+  <div id="kangarooing" style="display:none;">
+    <img id="shout" src="img/shout.png">
+  </div>
+  <img id="fart" src="img/fart.png">
+
+  <h1> Choose a flag to colour </h1>
+
+  | <a href="#sweden" id="sweden-link">Sweden</a> |
+  <a href="#germany" id="germany-link">Germany</a> |
+  <a href="#colombia" id="colombia-link">Colombia</a> |
+
+  <div class="container-row">
+    <p class="note">click again!</p>
+    <canvas id="flag-canvas" class="flag-canvas" width="200" height="120" style="border:1px solid #c3c3c3;" onclick="suchDynamics()">
+      If you can see this sentence then your browser does not support the canvas element.
+    </canvas>
+  </div>
+
+
+
+  <script type="text/javascript" src="js/kangaroo.js"></script>
+  <script type="text/javascript" src="js/flags.js"></script>
+
+</body>
+<footer>
+  <hr>
+  Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+  from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+</footer>
+
+</html>
