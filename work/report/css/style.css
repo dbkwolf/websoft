@@ -2,23 +2,23 @@
  * Comments are written as C++ style.
  */
 html {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 body {
-    margin: 8px auto;
-    background: #fff;
-    width: 700px;
+  margin: 8px auto;
+  background: #fff;
+  width: 700px;
 }
 
 footer {
-  background-color:#fafafa;
-   text-align: center;
-   height:50px;
-   position:fixed;
-   bottom:0;
-   left:0;
-   width:100%;
+  background-color: #fafafa;
+  text-align: center;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 #skolenheter-table {
@@ -32,9 +32,13 @@ footer {
   padding: 8px;
 }
 
-#skolenheter-table tr:nth-child(even){background-color: #f2f2f2;}
+#skolenheter-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#skolenheter-table tr:hover {background-color: #ddd;}
+#skolenheter-table tr:hover {
+  background-color: #ddd;
+}
 
 #skolenheter-table th {
   padding-top: 12px;
@@ -48,7 +52,7 @@ footer {
   position: absolute;
   top: 100px;
   left: 100px;
-  z-index: 2;
+  z-index: 5;
 }
 
 #shout {
@@ -64,23 +68,24 @@ footer {
   top: 120px;
   left: 95px;
   z-index: 2;
-  visibility:hidden;
+  visibility: hidden;
 }
+
 .container_row {
-    border: 1px solid red;
-    height: 240px;
-    margin: 0;
-    position: relative;
+  border: 1px solid red;
+  height: 240px;
+  margin: 0;
+  position: relative;
 }
-.note{
+
+.note {
   position: absolute;
-    z-index: 0;
-    margin-right: 15px;
-    align-items: center;
-
-
+  z-index: 0;
+  margin-right: 15px;
+  align-items: center;
 }
-#flag-canvas{
+
+#flag-canvas {
   position: absolute;
   align-items: center;
   top: 140px;
@@ -92,19 +97,69 @@ footer {
 }
 
 #flag-canvas.growing {
-     width: 400px;
-     height: 240px;
+  width: 400px;
+  height: 240px;
 }
 
-#flag-canvas.m-fadeOut{
-
+#flag-canvas.m-fadeOut {
   visibility: hidden;
   opacity: 0;
   transition: visibility 500s linear 500ms, opacity 500ms;
-
 }
 
 #flag-canvas.m-fadeIn {
   visibility: visible;
   opacity: 1;
 }
+
+.loader {
+  position: fixed;
+  background-color: transparent;
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  top: 300px;
+  align-items: center;
+  margin-left: 300px;
+  z-index: 10;
+  border: 10px solid #979997;
+  border-radius: 50%;
+  border-top: 10px solid #4CAF50;
+  width: 32px;
+  height: 32px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  visibility: hidden;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* #loader {
+  position: fixed;
+  background-color: #FFF;
+  opacity: 0.5;
+  height: 50%;
+  width: 50%;
+  top: 400;
+  align-items: center;
+  z-index: 4;
+} */
