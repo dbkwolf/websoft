@@ -18,6 +18,7 @@ app.use(middleware.logIncomingToConsole); //perform middleware actions
 app.use(express.static(path.join(__dirname, "public"))); //make the public folder available in path
 app.use("/", routeIndex); //make the route index
 app.use("/lotto", routeLotto);
+
 app.listen(port, logStartUpDetailsToConsole);
 app.set("view engine", "ejs");
 

@@ -15,6 +15,8 @@ function logIncomingToConsole(req, res, next) {
   next();
 }
 
+
 module.exports = {
-  logIncomingToConsole: logIncomingToConsole
+  logIncomingToConsole: logIncomingToConsole,
+
 };

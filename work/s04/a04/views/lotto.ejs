@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lotto Draw</title>
+</head>
+
+<body>
+  <h1>Lotto Draw</h1>
+
+  <p>The lotto numbers of today are: <%= lotto_numbers %></p>
+  <form class="form" action="/lotto/lotto-json" method="post">
+    <input type="text" name="mylotto">
+    <button type="submit">Check Results</button>
+  </form>
+
+</body>
+
+</html>
