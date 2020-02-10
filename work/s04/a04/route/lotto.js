@@ -27,6 +27,8 @@ router.get("/lotto-json", function(req, res) {
   data.lotto_draw = JSON.stringify(lottoDraw);
   data.mylotto = "";
   data.result = "";
+  data.res_json = "";
+
   var row = req.query.row;
   var rowArray = new Array(7).fill(0);
 
@@ -40,17 +42,30 @@ router.get("/lotto-json", function(req, res) {
     console.info("undefined row value - no query")
   }
 
+
   //check if any elements of row match the draw
   //if match, show which by using .diff on Array prot.
   const match = (element) => lottoDraw.indexOf(element) >= 0
+
+  let result;
   if (rowArray.some(match)) {
-    data.result = rowArray.diff(lottoDraw);
+    result = rowArray.diff(lottoDraw);
   } else {
-    data.result = "There was no match"
+    result = "There was no match"
   }
 
+  data.result = result;
+
   console.info(rowArray);
-  res.render("lotto-json", data);
+  //res.render("lotto-json", data);
+  res.json({
+    lotto_draw: lottoDraw,
+    my_lotto: rowArray,
+    my_matches: result
+  });
+  return
+
+
 })
 
 
