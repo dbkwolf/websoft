@@ -1,0 +1,74 @@
+/*
+ * Comments are written as C++ style.
+ */
+html {
+  overflow-y: scroll;
+}
+
+h1, h2 {
+  font-family: 'Open Sans', sans-serif;
+  color: #231900;
+}
+
+body {
+  margin: 8px auto;
+  background: #fff;
+  width: 700px;
+  color: #231900;
+}
+
+p {
+  color: #231900;
+  font-family: 'Crimson Text', serif;
+}
+
+footer {
+  background-color: #fafafa;
+  text-align: center;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#table {
+  font-family: 'Open Sans', sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+#table td, #skolenheter-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table td.match {
+  background: green;
+  color: white;
+}
+
+#table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#table tr:hover {
+  background-color: #ddd;
+}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #FFCC00;
+  color: #231900;
+  width: 12.5%
+}

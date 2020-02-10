@@ -16,6 +16,8 @@ const routeLotto = require("./route/lotto.js");
 
 app.use(middleware.logIncomingToConsole); //perform middleware actions
 app.use(express.static(path.join(__dirname, "public"))); //make the public folder available in path
+app.use("/assets/", express.static(path.join(__dirname, "assets"))); //make the assets folder available in path
+
 app.use("/", routeIndex); //make the route index
 app.use("/lotto", routeLotto);
 

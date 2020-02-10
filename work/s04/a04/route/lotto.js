@@ -16,8 +16,52 @@ const lottoDraw = new Array(7).fill(0).map(drawLottoNumbers);
 // /lotto/
 router.get("/", (req, res) => {
   let data = {};
-  data.lotto_numbers = lottoDraw.toString(); //package as string
+  data.lotto_numbers = lottoDraw;
+  data.my_lotto = "";
+  //data.result = "";
+  var row = req.query.row;
+  var rowArray = new Array(7).fill(0);
+  var copyArr;
+  if (row !== undefined) {
+    var auxArray = row.split(",");
+    auxArray = auxArray.map(toInt);
+    Array.prototype.splice.apply(rowArray, [0, auxArray.length].concat(auxArray));
+    copyArr = rowArray;
+    rowArray = rowArray.map(x => [x, "no-match"]);
+    console.log(rowArray);
+    const match = (element) => lottoDraw.indexOf(element) >= 0
 
+    let matches;
+    if (copyArr.some(match)) {
+      matches = copyArr.diff(lottoDraw);
+      console.log("matches: " + matches);
+
+      copyArr = copyArr.map(num => {
+        let str = "";
+        if (matches.includes(num)) {
+          str = "match";
+        } else {
+          str = "no-match";
+        }
+        return [num, str];
+      });
+      rowArray = copyArr;
+    } else {
+      //   result = "There was no match"
+    }
+
+  } else {
+    console.info("undefined row value - no query")
+  }
+  //rowArray=rowArray.map(x => [x, "match"]);
+
+
+
+
+
+  //
+  // data.result = result;
+  data.my_lotto = rowArray;
   res.render("lotto", data);
 });
 
@@ -25,9 +69,9 @@ router.get("/", (req, res) => {
 router.get("/lotto-json", function(req, res) {
   let data = {};
   data.lotto_draw = JSON.stringify(lottoDraw);
+  data.res_json = "";
   data.mylotto = "";
   data.result = "";
-  data.res_json = "";
 
   var row = req.query.row;
   var rowArray = new Array(7).fill(0);
@@ -82,15 +126,17 @@ function toInt(element) {
 
 //prot sorts array and then compares it with the array passed in param
 Array.prototype.diff = function(arr2) {
-  var ret = [];
+  var result = [];
   this.sort();
   arr2.sort();
   for (var i = 0; i < this.length; i += 1) {
     if (arr2.indexOf(this[i]) > -1) {
-      ret.push(this[i]);
+      result.push(this[i]);
     }
   }
-  return ret;
+  return result;
 };
+
+
 
 module.exports = router;
