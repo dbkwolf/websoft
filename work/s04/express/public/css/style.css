@@ -1,0 +1,110 @@
+/*
+ * Comments are written as C++ style.
+ */
+html {
+    overflow-y: scroll;
+}
+
+body {
+    margin: 8px auto;
+    background: #fff;
+    width: 700px;
+}
+
+footer {
+  background-color:#fafafa;
+   text-align: center;
+   height:50px;
+   position:fixed;
+   bottom:0;
+   left:0;
+   width:100%;
+}
+
+#skolenheter-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#skolenheter-table td, #skolenheter-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#skolenheter-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#skolenheter-table tr:hover {background-color: #ddd;}
+
+#skolenheter-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#kangaroo {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 2;
+}
+
+#shout {
+  position: absolute;
+  top: 68px;
+  left: 164px;
+  z-index: 2;
+  visibility: visible;
+}
+
+#fart {
+  position: absolute;
+  top: 120px;
+  left: 95px;
+  z-index: 2;
+  visibility:hidden;
+}
+.container_row {
+    border: 1px solid red;
+    height: 240px;
+    margin: 0;
+    position: relative;
+}
+.note{
+  position: absolute;
+    z-index: 0;
+    margin-right: 15px;
+    align-items: center;
+
+
+}
+#flag-canvas{
+  position: absolute;
+  align-items: center;
+  top: 140px;
+  background-color: white;
+  width: 200px;
+  height: 120px;
+  z-index: 1;
+  transition: all 2s cubic-bezier(0.25, 1.5, 0.75, 1.5);
+}
+
+#flag-canvas.growing {
+     width: 400px;
+     height: 240px;
+}
+
+#flag-canvas.m-fadeOut{
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 500s linear 500ms, opacity 500ms;
+
+}
+
+#flag-canvas.m-fadeIn {
+  visibility: visible;
+  opacity: 1;
+}

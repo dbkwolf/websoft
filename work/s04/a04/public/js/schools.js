@@ -1,5 +1,6 @@
 const proxyUrl = "https://cors-anywhere.herokuapp.com/"; //proxy that adds cors header
 const table = document.getElementById('skolenheter-table');
+const tbody = document.getElementById('t-body');
 (function() {
   'use strict';
 
@@ -35,8 +36,6 @@ const table = document.getElementById('skolenheter-table');
 
 function populateTable(evt) {
   console.log(evt.target.value);
-  document.getElementById("loader").style.visibility = "visible";
-
 
   const url = "https://api.scb.se/UF0109/v2/skolenhetsregister/sv/kommun/" + evt.target.value;
   fetch(proxyUrl + url)
@@ -58,13 +57,9 @@ function populateTable(evt) {
 
       }
       old_tbody.parentNode.replaceChild(new_tbody, old_tbody);
-      document.getElementById("loader").style.visibility = "hidden";
 
-      //document.getElementById("loader").innerHTML = "";
 
     }).catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"));
-
-
 
   console.log('Sandbox is ready!');
 
