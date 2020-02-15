@@ -1,3 +1,4 @@
+</div>
 <footer class="page-footer orange darken-2 ">
          <div class="container">
            <div class="row">

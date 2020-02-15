@@ -45,7 +45,10 @@ window.clickOnKangaroo = function() {
 
 function onTimerElapsed() {
   var kangarooing = document.getElementById('kangarooing');
-  kangarooing.style.display = kangarooing.style.display === 'none' ? 'block' : 'none';
+  if (kangarooing != null) {
+    kangarooing.style.display = kangarooing.style.display === 'none' ? 'block' : 'none';
+  }
+
 }
 
 function startleKangaroo() {

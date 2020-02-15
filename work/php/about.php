@@ -30,7 +30,7 @@
 </article>
 
 
-</div>
+
 <?php include('view/footer.php') ?>
 <script type="text/javascript" src="js/kangaroo.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
