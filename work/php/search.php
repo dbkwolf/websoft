@@ -87,7 +87,7 @@ if(isset($_GET['submit-search'])){
                         <?php echo htmlspecialchars($book['release_year']);?>
                       </td>
                       <td  style="width: 50px;" hidden>
-                          <a id="delete_row" class="btn-small waves-effect waves-light red" style="margin-bottom: 5px; margin-left: 10px;"><i class="material-icons"style="font-size:20px;">delete</i></a>
+                          <a id='<?php echo htmlspecialchars($book['book_id']); ?>' class="btn-small waves-effect waves-light red" style="margin-bottom: 5px; margin-left: 10px;"><i class="material-icons"style="font-size:20px;">delete</i></a>
                           <a id="edit_row" class="btn-small waves-effect waves-light blue  " style=" margin-left: 10px;"><i class="material-icons"style="font-size:20px;">edit</i></a>
                       </td>
                     </tr>
