@@ -1,76 +1,26 @@
 <?php
 $books = null;
+require "src/db_functions.php";
+require "src/Book.php";
+
 if(isset($_POST['submit-row'])){
-
-
-  $conn = mysqli_connect('localhost','websoft','test1234','websoft'); //connect to Database
-
-  if(!$conn){
-    echo 'connection error'. mysqli_connect_error();
-  }
 
   $new_title =$_POST['new-title'];
   $new_author =$_POST['new-author'];
   $new_year =$_POST['new-year'];
-  $sql = '';
-  if($new_title==''||$new_author==''||$new_year==''){
 
+  if($new_title==''||$new_author==''||$new_year==''){
     echo "cant be empty";
   }else{
-    $sql = "INSERT INTO my_books (book_id,title, author, release_year) VALUES(0, '{$new_title}','{$new_author}','{$new_year}');";
-
+    $new_book = new Book($new_title, $new_author, $new_year);
+    $books = addToDatabase($new_book);
   }
-  // echo $sql;
-
-
-
-  $result = mysqli_query($conn, $sql);
-
-
-  mysqli_close($conn);
-
 }
 
 if(isset($_GET['submit-search'])){
-
-  $conn = mysqli_connect('localhost','websoft','test1234','websoft'); //connect to Database
-
-  if(!$conn){
-    echo 'connection error'. mysqli_connect_error();
-  }
-
   $search = $_GET['search-input'];
-
-  $sql = '';
-
-  if($_GET['search-input']==''){
-
-    $sql = 'SELECT * FROM my_books';
-  }else{
-    $sql = "SELECT * FROM my_books WHERE
-            MATCH(title) AGAINST('{$search}')
-            OR   MATCH(author) AGAINST('{$search}')
-            OR  release_year LIKE  '{$search}';";
-        // -- title LIKE '{$search}'
-        // -- OR author LIKE '{$search}'
-        // -- OR release_year LIKE  '{$search}'
-        // --  '{$search}';
-  }
-  // echo $sql;
-
-
-
-  $result = mysqli_query($conn, $sql);
-
-  $books = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-  mysqli_free_result($result);
-
-  mysqli_close($conn);
-
-
+  $books = searchDatabase($search);
 }
-
 
  ?>
 
@@ -163,7 +113,7 @@ if(isset($_GET['submit-search'])){
                           <td>
                             <div class="row white">
                               <div class="input-field col s12">
-                                <input id="input_text" type="text" name="new-title" class="validate" data-length="30">
+                                <input id="input_text" type="text" name="new-title" class="validate" data-length="120">
                                 <label class="active" for="add_title">Title</label>
                               </div>
                             </div>
