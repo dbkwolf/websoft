@@ -175,3 +175,7 @@ main {
 .input-field .prefix.active {
   color: #000;
 }
+
+.no-padding {
+  padding: 5px !important
+}

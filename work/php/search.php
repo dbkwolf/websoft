@@ -83,6 +83,9 @@ if(isset($_GET['submit-search'])){
           <div class="center">
             <h4>My Books Search</h4>
             <br>
+            <div class="test" id="test">
+
+            </div>
             <!-- Input Search -->
             <form action="search.php" method="GET">
             <div class="row">
@@ -111,22 +114,31 @@ if(isset($_GET['submit-search'])){
                     <th>Title</th>
                     <th>Author</th>
                     <th>Year</th>
+                    <th style="width: 50px;"></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="books_tbody">
                 <!-- Populate Table -->
                 <?php foreach($books as $book){  ?>
 
 
-                    <tr id='<?php echo htmlspecialchars($book['book_id']); ?>'>
+
+
+
+
+                    <tr class="book-row" id='<?php echo htmlspecialchars($book['book_id']); ?>'>
                       <td>
                         <?php echo htmlspecialchars($book['title']);?>
                       </td>
                       <td>
                         <?php echo htmlspecialchars($book['author']);?>
                       </td>
-                      <td>
+                      <td style="width: 100px;">
                         <?php echo htmlspecialchars($book['release_year']);?>
+                      </td>
+                      <td  style="width: 50px;" hidden>
+                          <a id="delete_row" class="btn-small waves-effect waves-light red" style="margin-bottom: 5px; margin-left: 10px;"><i class="material-icons"style="font-size:20px;">delete</i></a>
+                          <a id="edit_row" class="btn-small waves-effect waves-light blue  " style=" margin-left: 10px;"><i class="material-icons"style="font-size:20px;">edit</i></a>
                       </td>
                     </tr>
 
@@ -143,11 +155,13 @@ if(isset($_GET['submit-search'])){
                    <!-- Extra Line for adding new row -->
 
                   <tbody id="addrow_tbody" hidden>
+                    <form class="col s12" action="search.php" method="POST">
+
                       <tr id="add_row">
-                        <form class="col s12" action="search.php" method="POST">
+
 
                           <td>
-                            <div class="row">
+                            <div class="row white">
                               <div class="input-field col s12">
                                 <input id="input_text" type="text" name="new-title" class="validate" data-length="30">
                                 <label class="active" for="add_title">Title</label>
@@ -156,7 +170,7 @@ if(isset($_GET['submit-search'])){
                           </td>
 
                           <td>
-                            <div class="row">
+                            <div class="row white">
                               <div class="input-field col s12">
                                 <input id="add_author" type="text" name="new-author" class="validate" data-length="30">
                                 <label class="active" for="add_author">Author</label>
@@ -164,8 +178,8 @@ if(isset($_GET['submit-search'])){
                             </div>
                           </td>
 
-                          <td>
-                            <div class="row">
+                          <td style="width: 100px;">
+                            <div class="row white">
                               <div class="input-field col s12">
                                 <input id="add_year" type="text" name="new-year" class="validate" data-length="4">
                                 <label class="active" for="add_year">Year</label>
@@ -173,30 +187,18 @@ if(isset($_GET['submit-search'])){
                             </div>
                           </td>
 
-                          <td>
-                            <div class="row">
-                              <!-- Button: cancel insert of new row -->
-                              <div class="input-field col s1 offset-s1">
-                                <a id="cancel_insert" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">close</i></a>
-
-                              </div>
+                        <td style="width: 50px;">
+                          <div class="row ">
+                            <div class="col s12">
+                              <a id="cancel_insert" class="btn-small waves-effect waves-light red "style="margin-top: 5px; margin-left: 10px;margin-bottom: 5px;"><i class="material-icons">close</i></a>
+                              <button type="submit" class="btn-small green " name="submit-row"value="submit" style=" margin-bottom: 5px;margin-left: 10px;"><i class="material-icons">send</i></button>
                             </div>
-                            <div class="row">
-
-                              <div class="input-field col s1 offset-s1">
-                                <!-- Button: submit new row via POST -->
-                                <input type="submit" class="btn-small green" name="submit-row"value="submit">
-                              </div>
-
-                            </div>
-
-                          </td>
-
-                        </form>
-
+                          </div>
+                        </td>
 
                       </tr>
 
+                    </form>
                     </tbody>
 
 
