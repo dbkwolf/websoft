@@ -56,7 +56,7 @@ for (var i = 0; i < book_r.length; i++) {
   });
 
   book_r[i].addEventListener("mouseout", function() {
-    document.getElementById('test').innerHTML = this.cells[2].innerHTML;
+    // document.getElementById('test').innerHTML = this.cells[2].innerHTML;
     this.cells[3].hidden = true;
   });
 
@@ -70,9 +70,14 @@ for (var i = 0; i < book_r.length; i++) {
   book_r[i].cells[3].children[1].addEventListener("click", function() {
 
     document.getElementById('edit-id').value = this.id;
-    document.getElementById('edit-title').placeholder = curr_title.trim();
-    document.getElementById('edit-author').placeholder = curr_author.trim();
-    document.getElementById('edit-year').placeholder = curr_year.trim();
+    document.getElementById('edit-title').value = curr_title.trim();
+    document.getElementById('edit-author').value = curr_author.trim();
+    document.getElementById('edit-year').value = curr_year.trim();
+
+
+    document.getElementById('default-title').value = curr_title.trim();
+    document.getElementById('default-author').value = curr_author.trim();
+    document.getElementById('default-year').value = curr_year.trim();
 
 
   })

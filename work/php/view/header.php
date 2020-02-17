@@ -18,7 +18,7 @@ Comments are written as HTML style.
 <header>
 <div class="navbar-fixed">
   <nav >
-    <div class="indigo lighten-2 nav-wrapper ">
+    <div class="blue-grey darken-1 nav-wrapper ">
     <!-- <a href="me.html">Me</a> |
     <a href="report.html">Report</a> |
     <a href="about.html">About</a> |

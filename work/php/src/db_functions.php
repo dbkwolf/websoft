@@ -98,30 +98,11 @@ function editDatabaseTuple($id, $title, $author, $year){
 
     $db = connectDatabase();
 
-    $sql = "UPDATE my_books SET ";
-    //some validation
+    $sql = 'UPDATE my_books SET title = ?, author = ?, release_year = ?  WHERE my_books.book_id = ?';
 
-    $aux_array = array();
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$title, $author, $year, $id]);
+    $res = readDatabase();
 
-    if (!empty($title)){
-        array_push($aux_array, "title = ?");
-    }
-
-    if(!empty($author)){
-        array_push($aux_array,"author = ?");
-    }
-
-    if(!empty($year)){
-        array_push($aux_array, "year = ?");
-    }
-
-    sql.implode(',',$aux_array)
-
-    $sql." WHERE my_books.book_id = ?";
-    // $stmt = $db->prepare($sql);
-    // $stmt->execute([$id]);
-    // $res = readDatabase();
-
-    //// TODO: perform binary tree search for case -> implement case to execute stmt correctly.
 
 }

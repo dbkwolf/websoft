@@ -1,5 +1,5 @@
 </div>
-<footer class="page-footer orange darken-2 ">
+<footer class="page-footer blue-grey darken-1 ">
          <div class="container">
            <div class="row">
              <div class="col l6 s12">

@@ -3,6 +3,8 @@ $books = null;
 require "src/db_functions.php";
 require "src/Book.php";
 
+$no_result ="";
+
 if(isset($_POST['submit-row'])){
 
   $new_title =$_POST['new-title'];
@@ -10,16 +12,18 @@ if(isset($_POST['submit-row'])){
   $new_year =$_POST['new-year'];
 
   if($new_title==''||$new_author==''||$new_year==''){
-    echo "cant be empty";
+      echo "cant be empty";
   }else{
     $new_book = new Book($new_title, $new_author, $new_year);
     $books = addToDatabase($new_book);
   }
+  
 }
 
 if(isset($_GET['submit-search'])){
   $search = $_GET['search-input'];
   $books = searchDatabase($search);
+  $no_result ="No Results";
 }
 
 if(isset($_POST['submit-delete'])){
@@ -27,6 +31,7 @@ if(isset($_POST['submit-delete'])){
   $books = deleteBookFromDatabase($delete_id);
   $newURL = 'http://localhost/php/search.php?search-input=&submit-search=submit';
   header('Location: '.$newURL);
+
 }
 
 if(isset($_POST['submit-edit'])){
@@ -34,10 +39,22 @@ if(isset($_POST['submit-edit'])){
   $edit_title = $_POST['edit-title'];
   $edit_author = $_POST['edit-author'];
   $edit_year = $_POST['edit-year'];
-  // $books = editDatabaseTuple($edit_id, $edit_title, $edit_author, $edit_year);
-  // $newURL = 'http://localhost/php/search.php?search-input=&submit-search=submit';
-  // header('Location: '.$newURL);
-  echo "$edit_id, $edit_title, $edit_author, $edit_year";
+
+  if(empty($edit_title)){
+    $edit_title = $_POST['default-title'];
+  }
+
+  if(empty($edit_author)){
+    $edit_author = $_POST['default-author'];
+  }
+  if(empty($edit_year)){
+    $edit_year = $_POST['default-year'];
+  }
+
+  $books = editDatabaseTuple($edit_id, $edit_title, $edit_author, $edit_year);
+  $newURL = 'http://localhost/php/search.php?search-input=&submit-search=submit';
+  header('Location: '.$newURL);
+
 }
 
  ?>
@@ -51,10 +68,6 @@ if(isset($_POST['submit-edit'])){
           <div class="center">
             <h4>My Books Search</h4>
             <br>
-
-            <div class="test" id="test">
-
-            </div>
 
             <!-- Input Search -->
             <form action="search.php" method="GET">
@@ -104,6 +117,10 @@ if(isset($_POST['submit-edit'])){
                 </div>
                 <div class="modal-footer">
 
+                  <input type="text" id="default-title" name="default-title" hidden>
+                  <input type="text" id="default-author" name="default-author" hidden>
+                  <input type="text" id="default-year" name="default-year" hidden>
+
                   <input type="text" id="edit-id" name="edit-id" hidden>
                   <input type="submit" id="btn_edit" class="modal-close waves-effect waves-green btn-flat green" name="submit-edit" value="Save Changes">
                   <a href="#!" class="modal-close waves-effect waves-green btn-flat grey">Cancel</a>
@@ -111,7 +128,6 @@ if(isset($_POST['submit-edit'])){
                 </div>
             </form>
           </div>
-
 
             <!-- Container for Results Table -->
             <div class="row">
@@ -130,11 +146,6 @@ if(isset($_POST['submit-edit'])){
                 <tbody id="books_tbody">
                 <!-- Populate Table -->
                 <?php foreach($books as $book){  ?>
-
-
-
-
-
 
                     <tr class="book-row" id='<?php echo htmlspecialchars($book['book_id']); ?>'>
                       <td>
@@ -158,7 +169,7 @@ if(isset($_POST['submit-edit'])){
 
                    <?php }else{
                      ?> <div id="no_result" class="container align-center">
-                       No Results
+                       <?php echo htmlspecialchars($no_result); ?>
                      </div> <?php
                    }?>
 
@@ -226,20 +237,71 @@ if(isset($_POST['submit-edit'])){
             </div>
             <br>
             <!-- Action Buttons -->
-            <div class="row">
+            <!-- <div class="row">
               <div class="col s3 "><a class="waves-effect waves-light btn-large">Create</a></div>
               <div class="col s3 "><a class="waves-effect waves-light btn-large">Update</a></div>
               <div class="col s3 "><a class="waves-effect waves-light btn-large">Read</a></div>
               <div class="col s3 "><a class="waves-effect waves-light btn-large">Delete</a></div>
+            </div> -->
+            <div class="row">
+              <div class="col s3 m3">
+                <div class="card small blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title"><i class="material-icons">add</i> Create</span>
+                    <p>This page contains the functionalities of creating a new row in the database.
+                    By clicking on the big floating red button a new row in the table view will appear for the user to input the data.</p>
+                  </div>
+                  <div class="card-action">
+                     <i class="material-icons medium green-text">check</i>
+                  </div>
+                </div>
+              </div>
+              <div class="col s3 m3">
+                <div class="card small blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title"><i class="material-icons">search</i> Read</span>
+                    <p>All the contents of the database are visible by leaving the search field empty and pressing the pink Submit button in the upper right corner.
+                    Searching the database is possible and this site is using Free Text search. </p>
+                  </div>
+                  <div class="card-action">
+                    <i class="material-icons medium green-text">check</i>
+                  </div>
+                </div>
+              </div>
+              <div class="col s3 m3">
+                <div class="card small blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title"><i class="material-icons">edit</i> Update</span>
+                    <p>After searching for the book to be updated, the user can hover over the row to view the edit action button.
+                    Pressing this button will activate a modal box (Materialize alert box) to input the changes. If fields are left blank, then no changes are made to those fields. </p>
+                  </div>
+                  <div class="card-action">
+                    <i class="material-icons medium green-text">check</i>
+                  </div>
+                </div>
+              </div>
+              <div class="col s3 m3">
+                <div class="card small blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title"><i class="material-icons">delete</i> Delete</span>
+                    <p>After searching for the book to be deleted, the user can hover over the row to view the delete action button.
+                    Pressing this button will activate a modal box to get a second confirmation from the user before permanently deleting the record from the database.</p>
+                  </div>
+                  <div class="card-action">
+                    <i class="material-icons medium green-text">check</i>
+                  </div>
+                </div>
+              </div>
             </div>
 
-          </div>
+          <!-- center div -->
+           </div>
 
 
       <?php include('view/footer.php') ?>
   </body>
 
-  <script type="text/javascript" src="js/addrow.js"></script>
+  <script type="text/javascript" src="js/search.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/kangaroo.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
