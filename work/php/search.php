@@ -22,6 +22,24 @@ if(isset($_GET['submit-search'])){
   $books = searchDatabase($search);
 }
 
+if(isset($_POST['submit-delete'])){
+  $delete_id = $_POST['delete-id'];
+  $books = deleteBookFromDatabase($delete_id);
+  $newURL = 'http://localhost/php/search.php?search-input=&submit-search=submit';
+  header('Location: '.$newURL);
+}
+
+if(isset($_POST['submit-edit'])){
+  $edit_id = $_POST['edit-id'];
+  $edit_title = $_POST['edit-title'];
+  $edit_author = $_POST['edit-author'];
+  $edit_year = $_POST['edit-year'];
+  // $books = editDatabaseTuple($edit_id, $edit_title, $edit_author, $edit_year);
+  // $newURL = 'http://localhost/php/search.php?search-input=&submit-search=submit';
+  // header('Location: '.$newURL);
+  echo "$edit_id, $edit_title, $edit_author, $edit_year";
+}
+
  ?>
 
 <!DOCTYPE html>
@@ -33,9 +51,11 @@ if(isset($_GET['submit-search'])){
           <div class="center">
             <h4>My Books Search</h4>
             <br>
+
             <div class="test" id="test">
 
             </div>
+
             <!-- Input Search -->
             <form action="search.php" method="GET">
             <div class="row">
@@ -51,8 +71,48 @@ if(isset($_GET['submit-search'])){
                   </div>
               </div>
             </div>
-
             </form>
+
+            <!-- Modal Alert: Delete Book -->
+            <div id="modal_delete" class="modal">
+             <div class="modal-content">
+               <i class="material-icons">delete</i>
+               <h5>Delete Book</h5>
+               <p>Are you sure you want to permanently delete this book from the database?</p>
+               <h6 id="book_info"></h6>
+             </div>
+             <div class="modal-footer">
+               <form  action="search.php" method="POST">
+                 <input type="text" id="delete-id" name="delete-id" hidden>
+                 <input type="submit" id="btn_delete" class="modal-close waves-effect waves-green btn-flat red" name="submit-delete" value="Delete">
+                 <a href="#!" class="modal-close waves-effect waves-green btn-flat grey">Cancel</a>
+               </form>
+             </div>
+           </div>
+
+           <!-- Modal Alert: Update Book -->
+           <div id="modal_edit" class="modal">
+             <form  action="search.php" method="POST">
+               <div class="modal-content">
+                  <i class="material-icons">edit</i>
+                  <h5>Edit Book Details</h5>
+                  <div class="container">
+                    <input type="text" id="edit-title" name="edit-title" placeholder="">
+                    <input type="text" id="edit-author" name="edit-author" placeholder="">
+                    <input type="text" id="edit-year" name="edit-year" placeholder="">
+                  </div>
+                </div>
+                <div class="modal-footer">
+
+                  <input type="text" id="edit-id" name="edit-id" hidden>
+                  <input type="submit" id="btn_edit" class="modal-close waves-effect waves-green btn-flat green" name="submit-edit" value="Save Changes">
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat grey">Cancel</a>
+
+                </div>
+            </form>
+          </div>
+
+
             <!-- Container for Results Table -->
             <div class="row">
               <div class="col s10 offset-s1">
@@ -87,8 +147,8 @@ if(isset($_GET['submit-search'])){
                         <?php echo htmlspecialchars($book['release_year']);?>
                       </td>
                       <td  style="width: 50px;" hidden>
-                          <a id='<?php echo htmlspecialchars($book['book_id']); ?>' class="btn-small waves-effect waves-light red" style="margin-bottom: 5px; margin-left: 10px;"><i class="material-icons"style="font-size:20px;">delete</i></a>
-                          <a id="edit_row" class="btn-small waves-effect waves-light blue  " style=" margin-left: 10px;"><i class="material-icons"style="font-size:20px;">edit</i></a>
+                          <a id='<?php echo htmlspecialchars($book['book_id']); ?>' class="btn-small waves-effect waves-light red modal-trigger" href="#modal_delete" style="margin-bottom: 5px; margin-left: 10px;"><i class="material-icons"style="font-size:20px;">delete</i></a>
+                          <a id='<?php echo htmlspecialchars($book['book_id']); ?>' class="btn-small waves-effect waves-light blue modal-trigger" href="#modal_edit" style=" margin-left: 10px;"><i class="material-icons"  style="font-size:20px;">edit</i></a>
                       </td>
                     </tr>
 
@@ -183,6 +243,11 @@ if(isset($_GET['submit-search'])){
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/kangaroo.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.modal').modal();
+});
+</script>
 
 
 </html>

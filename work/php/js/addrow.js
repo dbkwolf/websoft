@@ -4,7 +4,7 @@ var insert_tbody = document.getElementById('addrow_tbody');
 var no_res = document.getElementById('no_result');
 var cancel_insert = document.getElementById('cancel_insert');
 var book_r = document.getElementsByClassName('book-row');
-var delete_r = document.getElementById('delete_row');
+
 
 floater.addEventListener("click", function() {
 
@@ -26,35 +26,54 @@ cancel_insert.addEventListener("click", function() {
 });
 
 var row_info;
+var curr_title;
+var curr_author;
+var curr_year;
+
+
+function prepareRowInfo(row) {
+
+  curr_title = row.cells[0].innerHTML;
+  curr_author = row.cells[1].innerHTML;
+  curr_year = row.cells[2].innerHTML;
+
+  let alert_str = '';
+
+  alert_str += 'Title: <b>' + curr_title + '</b> | ';
+  alert_str += 'Author: <b>' + curr_author + '</b> | ';
+  alert_str += 'Release Year: <b>' + curr_year + '</b> ';
+
+  return alert_str;
+}
 
 
 for (var i = 0; i < book_r.length; i++) {
+
   book_r[i].addEventListener("mouseover", function() {
     this.cells[3].hidden = false;
     row_info = prepareRowInfo(this);
-    document.getElementById('test').innerHTML = row_info;
+
   });
+
   book_r[i].addEventListener("mouseout", function() {
     document.getElementById('test').innerHTML = this.cells[2].innerHTML;
     this.cells[3].hidden = true;
   });
+
   book_r[i].cells[3].children[0].addEventListener("click", function() {
-    console.log("i clicked the delete for row id  " + this.id + row_info);
-    if (confirm(`Are you sure you want to permanently delete this book from the database? \n ${row_info}`)) {
-      alert("row deleted");
-      //send request
-    } else {
-      alert("deletion canceled");
-      //send nothing
-    }
+
+    document.getElementById('delete-id').value = this.id;
+    document.getElementById('book_info').innerHTML = row_info;
 
   })
-}
 
-function prepareRowInfo(row) {
-  let alert_str = '';
-  for (var i = 0; i < row.cells.length - 1; i++) {
-    alert_str += row.cells[i].innerHTML + ' '
-  }
-  return alert_str;
+  book_r[i].cells[3].children[1].addEventListener("click", function() {
+
+    document.getElementById('edit-id').value = this.id;
+    document.getElementById('edit-title').placeholder = curr_title.trim();
+    document.getElementById('edit-author').placeholder = curr_author.trim();
+    document.getElementById('edit-year').placeholder = curr_year.trim();
+
+
+  })
 }
