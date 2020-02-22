@@ -56,3 +56,8 @@ services:
             - mysql_data:/var/lib/mysql
             - ./sql.d:/docker-entrypoint-initdb.d
             - ./example/docker/mysql_my.cnf:/root/.my.cnf
+
+    linux:
+        container_name: linux_websoft
+        # image: alpine:latest
+        image: debian:stretch-slim
