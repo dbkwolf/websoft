@@ -110,7 +110,7 @@
     <section>
       <div class = "card white">
         <div class = "card-content">
-          <span class = "card-title"><h4>S04 -Server side JavaScript with Node and Express</h4></span>
+          <span class = "card-title"><h4>S04 - Server side JavaScript with Node and Express</h4></span>
           <hr>
       <p><h5>Tell me about your previous experience on node/npm or any equal
         programming tools.</h5>    I had no experience with node or npm before this
@@ -143,24 +143,59 @@
         one. </p>
 
       <p><h5>What grade did you aim for and was it a difficult level?</h5>   I
-        always aim for a 5. Grade 5 was actually a lot easier than Grade 4
-        ...in my head. In hindsight Grade 4 was super easy and straight
-        forward but it turns out I gneuinely didn't know what we were required
-        to do. I naively thought that every GET/POST request generated a
-        response, and I thought responses were always JSON. I was very
-        mistaken. </p>
+        always aim for a 5. Grade 5 requirements were a lot easier for me to understand
+        the concept of than Grade 4's. In hindsight Grade 4 was straight
+        forward but it turns out I genuinely didn't know what we were required
+        to do. I naively thought that all  responses to GET/POST request
+        were always JSON. I was very  mistaken. </p>
 
       <p><h5>What is your TIL for this course section?</h5>   Many, many
         things. How to set up a node server, and organize the modules; How to
         use a templating framework; Basically how to set up a Server-side
         dynamic webpage from scratch. ...Oh, and that stupid JSON response thing, so dumb. </p>
 
-
+      </div>
+      </div>
     </section>
 
     <section>
-      <h5>S05</h5>
-      <p>Here is the text for this section.</p>
+
+      <div class = "card white">
+        <div class = "card-content">
+          <span class = "card-title"><h4>S05 - PHP and databases with MySQL/MariaDB</h4></span>
+          <hr>
+          <p><h5>How do you feel about PHP as a programming language?</h5>
+            Php was for me a lot more intuitive to learn than Python, for
+            example. It is a bit "non-forgiving", meaning the syntax is quite
+            strict, and I actually liked it. Super easy to learn, I would
+            consider it very beginner friendly.
+          </p>
+
+          <p><h5>Can you compare PHP to other languages you know?</h5>
+            Syntax wise, it reminds me a lot to C, so not surprising that I
+            found it so easy to pick up. Upon usage though, I see it more as a
+            scripting language, since there are many instances where once could
+            probably substitute php with Python, for example.  </p>
+
+          <p><h5>Describe how you took on the coding exercise, what grade did
+          you aim for and are you satisfied with the result?</h5>
+            This time I read all requirements and decided to deliver a solution
+            that would tackle all, rather than modularizing them. So, from the
+            very beginning, I was in the mindset of solving Grade 5 while making
+            sure I ticked the requirements of Grade 3 and 4 a long the way. I
+            purposely left out some requirements that I thought of as
+            unnecessary. For example, I thought it to be a bit "extra" to create
+            a file for each operation on the database, and I am looking forward
+            to explaining my reasoning during the 1-2-1 in March.</p>
+
+          <p><h5>What is your TIL for this course section?</h5>
+            I learned beyond the scope of this course. PHP was so intuitive to
+            me that I decided to learn Materialize to make things more
+            "übersichtlich" as we say in German, "with a clear overview". I
+            obviously also learned what was in the curriculum i.e. about XAMPP
+            and how to make SQL queries usign PHP syntax.</p>
+        </div>
+      </div>
     </section>
 
     <section>
