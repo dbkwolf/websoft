@@ -1,6 +1,6 @@
-# My Solutions
+# Assignment Solutions
 
-You can find the solutions to the assignments here: https://dbkwolf.github.io/websoft/                               
+You can find my solutions to the assignments here: https://dbkwolf.github.io/websoft/                               
 
 # websoft
 
