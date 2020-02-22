@@ -198,9 +198,69 @@
       </div>
     </section>
 
-    <section>
-      <h5>S06</h5>
-      <p>Here is the text for this section.</p>
+    <section id="a06-report">
+      <div class = "card white">
+        <div class = "card-content">
+          <span class = "card-title"><h4>S06 - JavaScript and PHP frameworks</h4></span>
+          <hr>
+            <p> <h5>What is your own opinion on popularity of programming languages and
+        what are your thoughts of future popularity among programming languages?</h5>
+        I believe the popularity of programming languages depend highly on the
+        problems required to be solved. Programmers will always want to find a better
+        and simpler way to program, in order to make the steps between idea to final
+        deploy as concise as possible. So new languages and frameworks will always be
+        introduced. The goal of programming languages is not to survive and be used
+        forever, but to make things easier for the programmers. I do think the next
+        languages will build upon the tried and tested syntax of their predecessors,
+        simplifying these while also adding new features. </p>
+
+              <p> <h5>What will be your own choice for selecting future programming
+        languages?</h5>  I think the smartest way to keep up with the industries
+        evolving needs is to not stop learning new languages. Thankfully, that has
+        always been my goal. The strategy I have in mind consists of learning the
+        overview of the most popular general purpose languages at the moment, as most
+        nowadays are based on C syntax. Next would be the domain specific languages.
+        These languages solve specific problems, and I aim to learn them as needed for
+        whatever problem I am trying to solve. I am under no illussions that I will ever
+        be "finished" learning new languages, programming or natural. </p>
+
+            <p> <h5>Personal Investigation on the trends of Programming Languages:</h5>
+      From my <a
+      href="https://trends.google.com/trends/explore?geo=US&q=python,clojure,javascript,java,haskell">own
+      research</a>, I can tell that object oriented C-based prorgamming languages are
+      more popular than functional, expression oriented, programming languages. I
+      decided to delve a bit deeper as to why this is: <br>from this <a
+      href="https://www.forbes.com/sites/quora/2018/07/27/why-purely-functional-programming-is-a-great-idea-with-a-misleading-name/#65d5064d20e9">
+      FORBES article</a>, albeit a biased, it seems to indicate that it is simply
+      a marketing failure in regards to naming these "purely functional" programming
+      languages. Since this is a matter of preference, <a href="https://news.ycombinator.com/item?id=19550918">this discussion thread</a> is more
+      helpful in terms of determining the industry's general consensus, with a grain of salt. From my own
+      experience, having been taught Haskell during my studies in Germany, I do have to
+      admit these functional languages have always fascinated me, it just takes longer
+      to wrap one's head around not modelling everything as objects. To conclude, I
+      don't think it would be bad advice to learn more functional programming
+      languages and even adopting these paradigms and practices into our Object
+      Oriented mentality.  </p>
+
+              <p> <h5>If you were to recommend a language/framework/technology to your
+        potential employer and your next large project, what would it be and how would
+        you “sell it”?</h5>  This is a subjective question. First of all, it depends
+        highly on the products or services the company is offering. Secondly, as a third
+        year student I don't think I have nearly scratched the surface in terms of what
+        type of options there are in this industry. For the purpose of this assignment,
+        let this be regarding a video streaming web service much like Netflix and after having
+        researched this for a couple of hours only: Based on the technology stack used
+        by video streaming giants today Node.js, ASP.NET, jQuery, React, MySQL along
+        with a cloud service solution seem to be a good combination. Language wise,
+        python, java and javascript have been top options. </p>
+
+          <p><h5>What is your TIL for this course section?</h5> Prior to this, I was
+      already aware that I didn't know half of the programming languages but now I
+      know the vastness of options available versus the restrictions imposed by
+      industry goals and experience limitations. There is not one programming language better
+      than the other. It is, in the end, all about the sweet spot between preference and suitability.  </p>
+        </div>
+      </div>
     </section>
 
     <section>
