@@ -14,7 +14,7 @@ namespace WebApp.Services
     public class DataService
     {
         public static List<Account> accounts = new List<Account>(); 
-        public static string path = "C:\\Users\\dbkwo\\Documents\\GitHub\\websoft\\work\\s07\\data\\account.json";
+        public static string path = "..\\..\\..\\..\\..\\..\\data\\account.json";
 
 
         public static List<Account> LoadJSON()
