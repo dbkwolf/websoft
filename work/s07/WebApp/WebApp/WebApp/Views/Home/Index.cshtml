@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebApp.Models.Account>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>An HTML table of all accounts that reads data from the json file:</p>
+
+
+
+        <table class="table table-bordered table-responsive-sm table-hover">
+
+            <tr>
+                <th>Account Number </th>
+                <th>Label </th>
+                <th>Balance </th>
+                <th>Owner</th>
+                <th> Actions </th>
+
+            </tr>
+
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td>@account.Number</td>
+                    <td>@account.Label</td>
+                    <td>@string.Format("{0:0.00}", account.Balance)</td>
+                    <td>@account.Owner</td>
+                    <td>
+                        @Html.ActionLink("Get JSON", "Account",
+                        "API", new { id = account.Number }, null)
+                    </td>
+                </tr>
+
+            }
+        </table>
+        <br />
+        <hr />
+        <h1 class="display-4">Transfer</h1>
+        
+
+    </div>
+    <div class="container-small">
+
+
+        <form action="/" method="post">
+
+            <table class="table">
+                <tr>
+                    <td>Sender:</td>
+                    <td><input type="text" name="sender" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Amount:</td>
+                    <td>  <input type="text" name="amount" value="" /></td>
+
+                </tr>
+                <tr>
+                    <td>Recipient:</td>
+                    <td><input type="text" name="recipient" value="" /></td>
+                </tr>
+            </table>
+
+            <input class="btn-outline-primary" type="submit" name="submit-form" value="HTML POST FORM" />
+            <br />
+
+        </form>
+       
+        <p class="text-info">@ViewBag.TxMsg</p>
+
+    </div>
+    
+<style type="text/css">
+    td {
+        width: 100px;
+    }
+
+    th {
+        width: 100px;
+    }
+     .container-small {
+        margin: auto;
+        width: 25%;
+       
+    }
+</style>
+
