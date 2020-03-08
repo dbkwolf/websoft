@@ -5,8 +5,10 @@
 
     <div class="text-center">
         <h1 class="display-4">Welcome</h1>
-        <p>An HTML table of all accounts that reads data from the json file:</p>
 
+               
+
+        <p>An HTML table of all accounts that reads data from the json file:</p>
 
 
         <table class="table table-bordered table-responsive-sm table-hover">
@@ -22,23 +24,23 @@
 
             @foreach (var account in Model)
             {
-                <tr>
-                    <td>@account.Number</td>
-                    <td>@account.Label</td>
-                    <td>@string.Format("{0:0.00}", account.Balance)</td>
-                    <td>@account.Owner</td>
-                    <td>
-                        @Html.ActionLink("Get JSON", "account",
-                        "api", new { id = account.Number }, null)
-                    </td>
-                </tr>
+            <tr>
+                <td>@account.Number</td>
+                <td>@account.Label</td>
+                <td>@string.Format("{0:0.00}", account.Balance)</td>
+                <td>@account.Owner</td>
+                <td>
+                    @Html.ActionLink("Get JSON", "account",
+                    "api", new { id = account.Number }, null)
+                </td>
+            </tr>
 
             }
         </table>
         <br />
         <hr />
         <h1 class="display-4">Transfer</h1>
-        
+
 
     </div>
     <div class="container-small">

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Diagnostics;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.Extensions.Logging;
 using WebApp.Models;
 using WebApp.Services;
@@ -45,6 +44,7 @@ namespace WebApp.Controllers
         }
 
        
+
         public IActionResult Privacy()
         {
             return View();

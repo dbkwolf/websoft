@@ -9,7 +9,7 @@ namespace ConsoleApp
     class ConsoleAppNavigator
     {
 
-        public static string path = "..\\..\\..\\..\\..\\data\\account.json";
+        public static string path = "data\\account.json";
         private static List<Account> accounts = new List<Account>();
 
 
