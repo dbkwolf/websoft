@@ -264,18 +264,121 @@
     </section>
 
     <section>
-      <h5>S07</h5>
-      <p>Here is the text for this section.</p>
+      <div class = "card white">
+        <div class = "card-content">
+          <span class = "card-title"><h4>S07 - ASP.NET and Model View Controller (MVC)</h4></span>
+          <hr>
+      <p><h5> Try to explain the platform .NET (C#, ASP.NET) to a skilled
+  programmer, but newbie to this Microsoft technology.</h5> ASP.NET Core is a
+  collection of libraries that form a Framework for building web applications.
+  and .NET is an open-source developer platform that allows developers to build
+  applications for many different platforms in one place. The languages used are
+  C#, F# and Visual Basic. There are many different .NET implementations that
+  allow developers ot implement solutions for different things. For eexample,
+  .NET Core allows website, server and console app developmet for Windows, Mac
+  and Linux. Then there's Xamarin/Mono which allows for mobile app development.
+  .NET also has set of API standards common to all .NET implmenetations, known
+  as the .NET standard, as well as many libraries to aid in development. </p>
+
+      <p><h5>Elaborate by comparing .NET technologies with the other technologies we
+  learned during the course.</h5> Compared to Node.js based web applications,
+  the .NET Framework has much better libraries which run much closer to runtime,
+  making these much more stable than Node.js. Minimizing the number of
+  dependencies and cenrtalizing them ensures that your project and all projects
+  dependencies don't break with a couple of lines of JavaScript. Having said
+  that .NET Core seems to be a bit more bare bones and with a much steeper
+  learning curve than Node.js, the latter being able to do anything a
+  server-side app is expected to do using pure Javascript making it easier for
+  new full-stack devs. Compared to PHP, you have to think about costs. ASP.NET
+  though open-source requires a License, whereas PHP is free. PHP is also older
+  and so has a bigger community than the newly released .NET core, which is very
+  handy for the creative php coders that are encouraged to write buggy customizations.
+
+      </p>
+
+      <p><h5>Describe how you took on the coding exercise, what grade did you aim for
+and are you satisfied with the result?</h5> I always aim for 5. I decided to tackle the console app
+first, seeing as I already had a lot of experience in building these
+specifically with c# from an extracurrilar course I did in the past. I finished
+the console app in under 6 hours, had aboslutely no setbacks and felt pretty
+good about it. The Web App using MVC and ASP.NET with C# was definitely a lot
+more challenging. The MVC design pattern was not the issue per se, as I
+remembered from previous projects wher we had to use it. The biggest problem was
+figuring out the "web app flow" and communication of user input from view to
+controller (not controller to view). I looked into model binding but in the end
+that wasn't necessary, as I used the html form to "read" user input, and for the
+JSON API I used Postman to generate the put and post request for testing
+purposes. It took me 2 days to complete the web application, which upon
+finishing I deployed using azure.
+
+      </p>
+
+      <p><h5>What is your TIL for this course section?</h5> During this course
+  section, I learned how to build and deploy a ASP.NET Core Web Application
+  using Azure, which is for free for students, and for which we get free credits
+  for the first month. Console app development I was already very fmailiar with.
+  </p>
+
+    </div>
+    </div>
     </section>
 
     <section>
-      <h5>S08</h5>
-      <p>Here is the text for this section.</p>
+      <div class = "card white">
+        <div class = "card-content">
+          <span class = "card-title"><h4>S08 - Web application performance</h4></span>
+          <hr>
+      <p><h5> Data Sheet:</h5>
+
+      </p>
+
+      <p><h5>Analysis Website 1:</h5>
+
+      </p>
+
+      <p><h5>Analysis Website 2:</h5>
+
+      </p>
+
+      <p><h5>Analysis Website 3:</h5>
+
+      </p>
+
+      <p><h5>Summary</h5>
+
+      </p>
+
+    </div>
+    </div>
     </section>
 
     <section>
-      <h5>S09</h5>
-      <p>Here is the text for this section.</p>
+      <div class = "card white">
+        <div class = "card-content">
+          <span class = "card-title"><h4>S09 - Web application performance</h4></span>
+          <hr>
+      <p><h5> Security Issue 1:</h5>
+
+      </p>
+
+      <p><h5> Security Issue 2:</h5>
+
+      </p>
+
+      <p><h5> Security Issue 3:</h5>
+
+      </p>
+
+      <p><h5>The Essential Guidelines to Create Secure Web Applications:</h5>
+
+      </p>
+
+      <p><h5>What is your TIL for this course section?</h5>
+
+      </p>
+
+    </div>
+    </div>
     </section>
 
     <section>
