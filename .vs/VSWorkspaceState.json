@@ -3,10 +3,14 @@
     "",
     "\\work",
     "\\work\\s07",
-    "\\work\\s07\\ConsoleApp",
-    "\\work\\s07\\ConsoleApp\\ConsoleApp",
-    "\\work\\s07\\data"
+    "\\work\\s07\\WebApp",
+    "\\work\\s07\\WebApp\\WebApp",
+    "\\work\\s07\\WebApp\\WebApp\\WebApp",
+    "\\work\\s07\\WebApp\\WebApp\\WebApp\\Controllers",
+    "\\work\\s07\\WebApp\\WebApp\\WebApp\\Models",
+    "\\work\\s07\\WebApp\\WebApp\\WebApp\\Views",
+    "\\work\\s07\\WebApp\\WebApp\\WebApp\\Views\\Shared"
   ],
-  "SelectedNode": "\\work\\s07\\data\\account.json",
+  "SelectedNode": "\\work\\s07\\WebApp\\WebApp\\WebApp\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }

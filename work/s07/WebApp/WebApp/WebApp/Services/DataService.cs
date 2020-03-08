@@ -8,19 +8,21 @@ using WebApp.Models;
 using System.Net.Http;
 using System.Text;
 using Nancy.Json;
+using System.Reflection;
 
 namespace WebApp.Services
 {
     public class DataService
     {
         public static List<Account> accounts = new List<Account>(); 
-        public static string path = "..\\..\\..\\data\\account.json";
-
-
+        
         public static List<Account> LoadJSON()
         {
+            //var assembly = Assembly.GetEntryAssembly();
+            //var resourceStream = assembly.GetManifestResourceStream("WebApp.data.account.json");
+            
 
-            using (StreamReader r = new StreamReader(path))
+            using (StreamReader r = new StreamReader("data\\account.json"))
             {
                 string json = r.ReadToEnd();
                 accounts = JsonConvert.DeserializeObject<List<Account>>(json);
@@ -34,8 +36,11 @@ namespace WebApp.Services
 
         private static void WriteJSON()
         {
+            var assembly = Assembly.GetEntryAssembly();
+            var resourceStream = assembly.GetManifestResourceStream("WebApp.data.account.json");
             var convertedJson = JsonConvert.SerializeObject(accounts, Formatting.Indented);
-            System.IO.File.WriteAllText(path, convertedJson);
+
+            System.IO.File.WriteAllText("data\\account.json", convertedJson);
         }
 
         public static void Update()
