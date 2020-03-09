@@ -19,7 +19,7 @@
 <!-- Here comes the slides in order -->
 <script data-role="slide" data-markdown type="text/html">
 # Software Development for the Web
-## Web Security
+## Web Application Security
 ### Mikael Roos
 </script>
 
@@ -28,7 +28,641 @@
 <script data-role="slide" data-markdown type="text/html">
 # Agenda
 
-* Web Security
+* Security in general
+* Web Application Security
+* OWASP Top Ten
+* Examples
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# [Exploits of a Mum](https://xkcd.com/327/)
+
+<img src="https://imgs.xkcd.com/comics/exploits_of_a_mom.png" style="width: 100%">
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# What does a hacker want?
+
+* Money
+* Control
+* Resources
+* Own agenda, activist
+* Feel the power, "I own you"
+* A challenge and show off "I can do it"
+* Fun of problem solving
+* Is time a limit?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Hacker terminology
+
+* Attack vector
+* Weakness
+* Exploit vulnerabilities
+* Chain of event
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+<img src="https://eforensicsmag.com/wp-content/uploads/2014/12/Untitled.png" title="There is always a way in" style="width: 100%">
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Ethical hacking
+
+* Hacking with the permissions of the system owner
+* To determine system vulnerabilities and weaknesses
+* To test and validate an organisations
+    * Information security measures and maturity
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# The circle of hack
+
+* View as _attacker/hacker_ or as _system owner_
+    * System
+    * Protection
+    * Attack
+    * Defence
+    * Restore
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Grade the level of concern
+
+* As system owner, protect your assets, keep a balance
+* Low - High
+    * Cost to protect
+    * Probability to exploit
+    * Impact if breached
+    * Level of detectability
+    * Cost to restore
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# OWASP Top Ten 2017
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# OWASP Top Ten 2017
+
+* 1 Injection
+* 2 Broken authentication
+* 3 Sensitive Data Exposure
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# OWASP Top Ten 2017
+
+* 4 XML External Entites (XXE)
+* 5 Broken Access Control 
+* 6 Security Misconfiguration
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# OWASP Top Ten...
+
+* 7 Cross-Site Scripting XSS
+* 8 Insecure Deserialization
+* 9 Using Components with Known Vulnerabilities
+* 10 Insufficient Logging &amp; Monitoring
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Danger areas
+
+* Host system
+* Web Application extra
+* Web Application
+* Web Application
+    * internals
+    * login
+    * helpers
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Host system
+
+* Login
+    * Repeated tries
+    * Bad passwords
+    * SSH keys (with passwords? backup?)
+* Open ports
+    * To all internet or only local network
+* Physical access
+    * Boot to single user
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application extra
+
+* SSH access
+* Database server
+* Web server configuration
+* External modules and services
+* Software as a service
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application
+
+* GUI affecting state or gaining control
+* Authentication and Authorization
+* Incoming data
+* Protocol
+    * Data sent
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application login
+
+* Repeated tries
+* Bad passwords (users / system storing / handling)
+* Automated login (cookie)
+* Session time to live
+* Reset password
+* Authentication service
+* Two factor authentication
+* Password manager
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application internals
+
+* $_GET
+* $_POST
+* $_FILE
+* $_SERVER
+* $_SESSION
+* $_COOKIES
+* Verbose error handling (development versus production system)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers
+
+* SQL
+* Prepared statements
+* Use placeholders ? and ??
+* Avoid multiqueries
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* Checkers to identify a valid value
+* `isset()` `empty()`
+* `??` (null coalesce operator)
+* `is_numeric()` `is_string()`
+* `ctype_digit()` `ctype_alpha()`
+* Regular expressions
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* Validate and Sanitize
+* `filter_var($email, FILTER_VALIDATE_EMAIL)`
+* `filter_var($email, FILTER_SANITIZE_EMAIL)`
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* User supplied content (blog, comments)
+* Save as is, escape on print
+* `htmlentities()`
+* `strip_tags()`
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* Lets review a [code sample for XSS](https://github.com/Webbprogrammering/websoft/blob/master/example/security/xss_codesample.php) injection and how to avoid it.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* User supplied content (blog, comments)
+* WYSIWYG editors
+* Markdown (parsers)
+* HTMLPurify
+* What tags to allow, `<?php ?>` ?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* `?sort=descending` (SQL injection?)
+
+```
+$orderby = $_GET["sort"] ?? null;
+$sql = "SELECT * FROM user ORDER BY name $orderby";
+
+// Check in value domain
+$orderbyValid = ["asc", "desc"];
+if (!in_array($orderby, $orderbyValid)) {
+    die("500 Invalid incoming");
+}
+```
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Web Application helpers...
+
+* Avoid `md5()` `sha()`
+* Use `password_hash()` `password_verify()`
+
+<img src="https://www.php.net/manual/en/images/2a34c7f2e658f6ae74f3869f2aa5886f-crypt-text-rendered.svg" style="width: 100%; background-color: white;">
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Example of some attacks
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+# Spam is dangerous?
+
+* [Style](https://arkiv.dbwebb.se/style//?id=157) ([spam](https://arkiv.dbwebb.se/style//?id=1999))
+* [Guestbooks](https://dbwebb.se/forum/viewtopic.php?t=637&p=3737)
+* [Forum](https://dbwebb.se/forum/viewtopic.php?f=21&t=8738)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Raspberry pi
+
+* Put it as a gateway to your home network
+* Standard user pi:raspberry
+* Consequenses of a break in?
+* How to protect?
+* How to clean up?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# `source.php`
+
+* [`source.php?path=work/me.php`](https://arkiv.dbwebb.se/kod-exempel/source.php)
+* As an aid in teaching and showing the source code of student submission on a live server
+
+</script>
+
+
+<!--
+<script data-role="slide" data-markdown type="text/html">
+# Shared server
+
+* ake1 include other phpscripts
+
+</script>
+-->
+
+
+
+<!--
+<script data-role="slide" data-markdown type="text/html">
+# Execute others code
+
+* locally, as when correcting submissions
+
+</script>
+-->
+
+
+
+<!--
+<script data-role="slide" data-markdown type="text/html">
+
+* [Best practice JWT login token](https://dbwebb.se/forum/viewtopic.php?f=11&t=8923)
+
+</script>
+-->
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+<img src=https://dbwebb.se/image/snapshot/sappar-xss-orginal.jpg style="width: 100%" alt="">
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+<iframe width="1024" height="720" src="https://www.youtube.com/embed/CYMR4BjHIeM" frameborder="0" allowfullscreen></iframe>
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# How to find an exploit
+
+This means that we need to wait a full week in order to exploit our vulnerability, as this is the time frame that takes that draft to be deleted. Fortunately for us, tokens usually last 24 hours, allowing us to retrieve the token a day before the expected deletion date, and using it in order to get into ‘edit_post()’ after the draft gets deleted.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# How to find an exploit...
+
+Finally, after passing the token validation, the privileges validation, the basic admin validation, and the post ID validation, changing the post status to ‘trash’ is as simple as sending an HTTP parameter. Thank God.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# How to find an exploit...
+
+Combining all of these bypasses together, we use a chain of around a dozen different bugs, a faulty privilege system, and about every false assumption in the system to achieve partial editor privileges. The road to a critical vulnerability is still long, but at its end we found both a SQLi and an XSS, to be described in the next posts.
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Stress the system
+
+* A stressed web application can provide some useful error messages
+* How about MySQL with "to many connections"?
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+<img src=img/max-connections.png style="width: 100%" alt="">
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+* Consequences on max connections on a shared server
+* Production server -> no verbose error handling
+* Log errors to file
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+# Stolen website traffic
+
+* Steal SEO and traffic
+* [take 1](https://dbwebb.se/forum/viewtopic.php?f=21&t=6598) [take 2](https://dbwebb.se/forum/viewtopic.php?f=21&t=7306)
+* Consider detect, impact, restore
+* Update Apache configuration
+    * Block known spambots
+    * Block access by HTTP_REFERER
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+
+# Stolen website identity
+
+* Stealing identities [Iframe clickjacking](https://dbwebb.se/forum/viewtopic.php?f=23&t=7359)
+* Consider detect, impact, restore
+* Update Apache configuration 
+
+`Header always append X-Frame-Options SAMEORIGIN`
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# OWASP Top Ten 2017
+
+1. Injection
+2. Broken authentication
+3. Sensitive Data Exposure
+4. XML External Entites (XXE)
+5. Broken Access Control 
+6. Security Misconfiguration
+7. Cross-Site Scripting XSS
+8. Insecure Deserialization
+9. Using Components with Known Vulnerabilities
+10. Insufficient Logging &amp; Monitoring
+
+</script>
+
+
+<!--
+<script data-role="slide" data-markdown type="text/html">
+# Example XSS
+
+https://dbwebb.se/forum/viewtopic.php?f=12&t=1702#p46756
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Example CSRF
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Example file injection
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Example remote code execution
+
+https://dbwebb.se/forum/viewtopic.php?f=12&t=1702#p27398
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Example SQL injection
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Example Login using ==
+
+</script>
+-->
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Validate incoming
+
+* Trust no one and no data
+* Prepare unsecure data
+* Validate incoming (server side)
+    * JavaScript client side is not enough
+* Check incoming value domain and type
+* Fail when corrupt input
+* "Fail hard, fail early"
+* Escape data on output
+
+</script>
+
+
+<!--
+<script data-role="slide" data-markdown type="text/html">
+# Validate incoming...
+
+Code sample
+
+XSS
+
+CSRF
+
+Injection SQL, file include, remote code execution
+
+</script>
+-->
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Final words
+
+* You can never be completely secure
+* What is the worst that can happen?
+* Incident response plan
+* Crash and recovery plan
+* Restore your backup
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Final words...
+
+> Protect yorself with means neccassary that are defensible in economic terms and relates to a balance of your estimated
+
+* Cost to protect
+* Probability to exploit
+* Impact if breached
+* Level of detectability
+* Cost to restore
+
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# Learn more?
+
+* Learn the operating system (Linux or Windows) as a client and as a server
+* Learn to write a server/service
+* Study on how to write good and clean code
+* Put a Pi as a gateway to your own home...
+* Capture The Flag (CTF)
+
+</script>
+
+
+
+<script data-role="slide" data-markdown type="text/html">
+# If there is time
+
+* [Some code samples](https://github.com/dbwebb-se/htmlphp/tree/master/example/security)
 
 </script>
 
