@@ -328,24 +328,90 @@ finishing I deployed using azure.
         <div class = "card-content">
           <span class = "card-title"><h4>S08 - Web application performance</h4></span>
           <hr>
-      <p><h5> Data Sheet:</h5>
+      <p>The 3 websites chosen for this assignment all have different purpose and target user.</p><br>
+
+      <p>Sweden's official government website: <a href="https://www.regeringen.se/"> <h6>https://www.regeringen.se/</h6></a></p>
+      <br>
+      <p>A tech forum: <a href="https://news.ycombinator.com/"> <h6>https://news.ycombinator.com/</h6></a></p>
+      <br>
+      <p>Disney's swedish homepage: <a href="https://disney.se/"> <h6>https://disney.se/</h6></a></p>
+
+<br>
+      <p><h5> Data Sheet</h5>
+        <p>A comparison of performance: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTM4BRil1rZZ9hcpVtuxOMX_9wkgIpQnU-PwBDOwi0_3Ek7-p41mNYh0mwrkFApdmOFSLMbOBrYyJW4/pub?output=pdf"> google docs sheet</a></p>
+        <br>
+        <iframe width="1200" height="200"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTM4BRil1rZZ9hcpVtuxOMX_9wkgIpQnU-PwBDOwi0_3Ek7-p41mNYh0mwrkFApdmOFSLMbOBrYyJW4/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+      </p>
+<br>
+      <p><h5>Analysis</h5>
 
       </p>
 
-      <p><h5>Analysis Website 1:</h5>
+      <p><h6 class="green-text">regering.se</h6>
+        The performance of this website is low. Even with a score of 79 in using best
+        practices we can see that this doesn't have much of an effect on performance.
+        Focusing on the desktop results, all performance metrics except for first
+        contenful paint (FCP) took a long time, specifically with 18.9s time to
+        interactive (TTI) and a first input delay (FID) of 51ms. With websites needing
+        to load faster than 10s the TTI of 18.9s makes this website slow to load not
+        only on dekstops but also on mobiles.
+        <br>The slow loading times seem to be linked
+        to the browser waiting to load images before finishing loading the rest of tasks
+        causing a bottle-neck. This can be fixed by deferring images to be loaded only
+        when onscreen and after all critical resources have finished loading.<br> Another
+        culprit for the long loading time could be due to large network payloads. With a
+        total size of 14.345 KB, payloads this big may not only slow down load time but
+        also be costly in relation to user's data consumption. A good way to reduce
+        payload size is to defer requests until they are needed, minify and compress
+        content and to use cache upon repeat visits to avoid re-downloaded data. </p>
 
+      <p><h6 class="green-text">news.ycombinator.com:</h6>
+        The performance score of this website has the top mark of 100 as all performance
+        metrics are within an acceptable range. The FCP is 0.7-0.9 seconds both for
+        desktop and mobile, which makes this website extremely fast. With a TTI of 1.0
+        seconds this website allows the user to immediately start interacting with its
+        contents allowing for an optimal browsing experience. The analysis tools,
+        PageSpeed and Lighthouse, did not return any opportunities for improvement for
+        mobile; and for desktop only suggested shortening the server response times by a
+        mere 0.37s. So not much can be done in terms of increasing speed performance. I suspect that this high performance can have a lot to do with the fact that this page is devoid of images.
+        <br>In terms of accessibility there is a lot of room for improvement. A score of 42,
+        not only for mobile but also for desktop, means that not every user will be able
+        to use this ultra fast website.  The main accessibility issues are regarding the
+        color contrasts, missing headers and lack of alt attributes.
       </p>
 
-      <p><h5>Analysis Website 2:</h5>
-
-      </p>
-
-      <p><h5>Analysis Website 3:</h5>
-
+      <p><h6 class="green-text">disney.se:</h6>
+        From all three websites, this is by far the one with the lowest performance
+        score. Curiously, Lighthouse and PageSpeed returned very different results,
+        albeit all bad. PageSpeed gave the result of 45 for Desktop and 11 for Mobile,
+        while Lighthouse gave the website a performance score of 14 for Desktop and a very
+        sad 6 for Mobile. These bad results seem to be caused by the FID of a whopping
+        490ms with a maximum FID of 1,170ms. All the other performance metrics were also
+        magnitudes higher than the other websites. A whole 2.9s of FID came from image
+        loading and there were even some rendering errors caused by some non-essential
+        resources. <br> From the diagnostics, the most time was spent evaluating scripts,
+        which if they contain errors can make the loading of the website very slow as is
+        the case here. Code from a third-party video platform also caused main-Thread
+        blocking which contributed to the slow FID. <br> Some opportunites for
+        improvement are deferring image loading like mentioned above for regering.se,
+        removing unused stylesheets and making sure that third-party code is not
+        producing errors that block essential resources from loading.
       </p>
 
       <p><h5>Summary</h5>
-
+        To summarize, most websites get a low performance score with long loading times
+        due to a large amount of images being loaded before essential resources.
+        Delaying the time at which they load, for instance only when they are on screen
+        and when needed, could drastically reduce the FID time.  Another big issue is
+        third-party code causing errors and the browser needing extra time to evaluate
+        these scripts. <br>Having said that, speed is not everything when it comes to performance. Having good accessibility ensures that users beyond the typical user are able to use
+        a fast loading webpage. Main issues with accessibility include choosing wrong
+        color contrasts and missing headers and alternate text for images, which help
+        users in areas with lower internet bandwidth and bad internet speeds. <br> In
+        conclusion, to immediately improve performance it is a safe bet to check whether
+        it is possible to defer every resource that is load-heavy until after critical
+        resources are loaded to avoid main-thread blocking.
       </p>
 
     </div>
