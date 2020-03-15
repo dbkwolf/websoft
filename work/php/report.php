@@ -421,26 +421,69 @@ finishing I deployed using azure.
     <section>
       <div class = "card white">
         <div class = "card-content">
-          <span class = "card-title"><h4>S09 - Web application performance</h4></span>
+          <span class = "card-title"><h4>S09 - Web security and OWASP</h4></span>
           <hr>
-      <p><h5> Security Issue 1:</h5>
-
+      <p><h5> Security Issue 1: Injection</h5>
+        Website using SQL or NoSQl that allow the user to input string to manipulate
+  the queries used to access databases are particularly vulnerable to this type
+  of attacks. From my own experience while building the solution for assignment
+  5, i had to make sure that while allowing the user to input their own search
+  strings to find a book in the Book Database, I needed to escape any special
+  characters that could potentially alter the reliability of the SQL query.
+  After some research, I decided to use wildcard in my SQL query to compile the
+  query first and THEN add the user input strings to it, making the database be
+  queried only in the way I intended it to be.
       </p>
 
-      <p><h5> Security Issue 2:</h5>
-
+      <p><h5> Security Issue 2: Insufficient Logging and Monitoring</h5>
+        Programmers are only human and it is a well known fact that the biggest
+        vulnerability in a system is the human input. Some companies have
+        surrendered to the fact that they will produce code that is not secure
+        and so make it even more of a requirement to have logs that specifically
+        record every authentication event, every access control failure and
+        every failed input along with many others to ensure that WHEN a breach
+        happens it is detected as soon as possible to mitigate the situation.
+        But regardless of whether we log or not, we should make sure to code in a
+        most secure manner possible, thinking beyond our software development
+        mindset to include a security engineering approach.
       </p>
 
-      <p><h5> Security Issue 3:</h5>
+      <p><h5> Security Issue 3: Component Vulnerabilities</h5>
+        Having an outdated 3rd party library is what caused the data breach at
+        Equifax.
+        Equifax used the Apache Struts 3rd party library to help it deal with large
+        quantities of data, but Apache went public with a vulnerability in their
+        code at the same time they released a fix for it.
+        The companies affected, including Equifax, needed to update every app
+        that ran on the struts platform individually.
+        But it didn't... releasing the credit card records of millions of americans.
+        The vulnerability of Apache Struts allowed for Remote Code Execution...
+      </p>
 
+      <p><h5> Security Issue 4: Cross Site Scripting XSS</h5>
+        A type of injection, this type of vulnerability allows for malicious users to run
+        code remotely (Remote Code Execution) by letting them send malicious scripts
+        to other end users of the web site.
       </p>
 
       <p><h5>The Essential Guidelines to Create Secure Web Applications:</h5>
-
+        1) Update Software and 3rd-party Libraries and Frameworks <br>
+        2) Secure authentication and authorization tokens and session cookies <br>
+        3) Enforce good password policies <br>
+        4) Log and Monitor all authentication and input success and failures.<br>
+        5) Ensure proper output escaping/encoding to prevent Injection.<br>
+        6) Follow the ASVS
       </p>
 
       <p><h5>What is your TIL for this course section?</h5>
-
+        Apart from Injection and Logging I wasn't aware of many of the OWASP
+        listed vulnerabilities.
+        I also learned that OWASP stands for Open Web Application Security Project,
+        which is an online community that produces freely-available articles about
+        web security.
+        The list of application security requirements is called in fact the ASVS:
+         Application Security Verification Standard of which the last version can
+         be found here: <a href="https://www.owasp.org/images/d/d4/OWASP_Application_Security_Verification_Standard_4.0-en.pdf"> PDF</a>
       </p>
 
     </div>
