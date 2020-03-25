@@ -31,12 +31,12 @@
 
       <p> <h5>Did you before know about the techniques Git,
         GitHub, Markdown and/or GitHub Pages?</h5> Yes, I did know about git and
-        githubpages before this course and tried to use it in my previous projects.
+        GitHub Pages before this course and tried to use it in my previous projects.
       </p>
       <p><h5> Have you ever created websites before?</h5> Yes, I have created
         websites but I am certain I didn't use best practice. just wanted to get it
         done. Most of my knowledge is based on trial and error and working from
-        examples. I read literature on Javascript but unlike with Java, I have less
+        examples. I read literature on JavaScript but unlike with Java, I have less
         experience in knowing where to begin when starting a project. </P>
       <p><h5>Briefly explain your experience and knowledge of web application development.</h5> My
         knowledge within web is very limited to basic CSS, JavaScript and HTML. I made
@@ -58,12 +58,12 @@
           <hr>
 
       <p><h5>Have you any previous experience of HTML, CSS and/or JavaScript?</h5>
-        Yes, I looked at the MDN pages and the Introductory JAvascript tutorials
+        Yes, I looked at the MDN pages and the Introductory JavaScript tutorials
         for other courses and managed to get a good understanding of how they all
         work together at a very basic level </p>
       <p><h5>Explain the role of HTML, CSS and JavaScript in web development.</h5>
-        HTML determines the structure, much like the skeletton of the web page, CSS determines how all these
-        structural pieces look like ot the user, and Javascript determines how
+        HTML determines the structure, much like the skeleton of the web page, CSS determines how all these
+        structural pieces look like to the user, and Javascript determines how
         these function i.e. the actions available on the webpage, generally to
         make a dynamic rather than a static website.</p>
       <p><h5>Give a brief explanation of how the browser, the HTTP protocol and the web server
@@ -88,7 +88,7 @@
         where it was less about doing things right and more about getting things
         done. </p>
       <p><h5>Can you compare and relate the JavaScript language to any
-        other language you know?</h5>  Yes, mix of c# with a functional programming
+        other language you know?</h5>  Yes, mix of C# with a functional programming
         language such as haskell, but very little of the latter. In terms of
         immutability, definitely. </p>
       <p><h5>Describe how you worked with the coding exercise, what grade do you aim for and how did your code turn out to
@@ -96,7 +96,7 @@
         lower grade tasks. I never had any intention to not do all of them, so it
         didn't matter to me. </p>
       <p><h5>What is your TIL for this course section?</h5>
-        Working with json objects and fetch. It was the part of the assignment that
+        Working with JSON objects and fetch. It was the part of the assignment that
         took me the longest time to grasp. More specifically the CORS issues that I
         had even when running the page from a CORS enabled server, then I tried
         disabling it. I finally decided to try a proxy, which worked immediately.
@@ -114,7 +114,7 @@
           <hr>
       <p><h5>Tell me about your previous experience on node/npm or any equal
         programming tools.</h5>    I had no experience with node or npm before this
-        assignment.I had heard about it and noticed it listed in many job ads
+        assignment. I had heard about it and noticed it listed in many job ads
         but never understood when it would be appropriate to use.</p>
 
       <p><h5>How do you feel about working with JavaScript, Node and Express?</h5>
@@ -165,7 +165,7 @@
           <span class = "card-title"><h4>S05 - PHP and databases with MySQL/MariaDB</h4></span>
           <hr>
           <p><h5>How do you feel about PHP as a programming language?</h5>
-            Php was for me a lot more intuitive to learn than Python, for
+            PHP was for me a lot more intuitive to learn than Python, for
             example. It is a bit "non-forgiving", meaning the syntax is quite
             strict, and I actually liked it. Super easy to learn, I would
             consider it very beginner friendly.
@@ -175,7 +175,7 @@
             Syntax wise, it reminds me a lot to C, so not surprising that I
             found it so easy to pick up. Upon usage though, I see it more as a
             scripting language, since there are many instances where once could
-            probably substitute php with Python, for example.  </p>
+            probably substitute PHP with Python, for example.  </p>
 
           <p><h5>Describe how you took on the coding exercise, what grade did
           you aim for and are you satisfied with the result?</h5>
@@ -193,7 +193,7 @@
             me that I decided to learn Materialize to make things more
             "übersichtlich" as we say in German, "with a clear overview". I
             obviously also learned what was in the curriculum i.e. about XAMPP
-            and how to make SQL queries usign PHP syntax.</p>
+            and how to make SQL queries using PHP syntax.</p>
         </div>
       </div>
     </section>
@@ -221,15 +221,15 @@
         overview of the most popular general purpose languages at the moment, as most
         nowadays are based on C syntax. Next would be the domain specific languages.
         These languages solve specific problems, and I aim to learn them as needed for
-        whatever problem I am trying to solve. I am under no illussions that I will ever
+        whatever problem I am trying to solve. I am under no illusions that I will ever
         be "finished" learning new languages, programming or natural. </p>
 
             <p> <h5>Personal Investigation on the trends of Programming Languages:</h5>
       From my <a
       href="https://trends.google.com/trends/explore?geo=US&q=python,clojure,javascript,java,haskell">own
-      research</a>, I can tell that object oriented C-based prorgamming languages are
+      research</a>, I can tell that object oriented C-based programming languages are
       more popular than functional, expression oriented, programming languages. I
-      decided to delve a bit deeper as to why this is: <br>from this <a
+      decided to delve a bit deeper as to why this is. <br> From this <a
       href="https://www.forbes.com/sites/quora/2018/07/27/why-purely-functional-programming-is-a-great-idea-with-a-misleading-name/#65d5064d20e9">
       FORBES article</a>, albeit a biased, it seems to indicate that it is simply
       a marketing failure in regards to naming these "purely functional" programming
@@ -264,7 +264,7 @@
     </section>
 
     <section>
-      <div class = "card white">
+        <div class = "card white">
         <div class = "card-content">
           <span class = "card-title"><h4>S07 - ASP.NET and Model View Controller (MVC)</h4></span>
           <hr>
@@ -274,17 +274,17 @@
   and .NET is an open-source developer platform that allows developers to build
   applications for many different platforms in one place. The languages used are
   C#, F# and Visual Basic. There are many different .NET implementations that
-  allow developers ot implement solutions for different things. For eexample,
-  .NET Core allows website, server and console app developmet for Windows, Mac
+  allow developers to implement solutions for different things. For example,
+  .NET Core allows website, server and console app development for Windows, Mac
   and Linux. Then there's Xamarin/Mono which allows for mobile app development.
-  .NET also has set of API standards common to all .NET implmenetations, known
+  .NET also has set of API standards common to all .NET implementations, known
   as the .NET standard, as well as many libraries to aid in development. </p>
 
       <p><h5>Elaborate by comparing .NET technologies with the other technologies we
   learned during the course.</h5> Compared to Node.js based web applications,
   the .NET Framework has much better libraries which run much closer to runtime,
   making these much more stable than Node.js. Minimizing the number of
-  dependencies and cenrtalizing them ensures that your project and all projects
+  dependencies and centralizing them ensures that your project and all projects
   dependencies don't break with a couple of lines of JavaScript. Having said
   that .NET Core seems to be a bit more bare bones and with a much steeper
   learning curve than Node.js, the latter being able to do anything a
@@ -299,11 +299,11 @@
       <p><h5>Describe how you took on the coding exercise, what grade did you aim for
 and are you satisfied with the result?</h5> I always aim for 5. I decided to tackle the console app
 first, seeing as I already had a lot of experience in building these
-specifically with c# from an extracurrilar course I did in the past. I finished
-the console app in under 6 hours, had aboslutely no setbacks and felt pretty
+specifically with c# from an extracurricular course I did in the past. I finished
+the console app in under 6 hours, had absolutely no setbacks and felt pretty
 good about it. The Web App using MVC and ASP.NET with C# was definitely a lot
 more challenging. The MVC design pattern was not the issue per se, as I
-remembered from previous projects wher we had to use it. The biggest problem was
+remembered from previous projects where we had to use it. The biggest problem was
 figuring out the "web app flow" and communication of user input from view to
 controller (not controller to view). I looked into model binding but in the end
 that wasn't necessary, as I used the html form to "read" user input, and for the
@@ -315,15 +315,15 @@ finishing I deployed using azure.
 
       <p><h5>What is your TIL for this course section?</h5> During this course
   section, I learned how to build and deploy a ASP.NET Core Web Application
-  using Azure, which is for free for students, and for which we get free credits
-  for the first month. Console app development I was already very fmailiar with.
+  using Azure, which is free for students, and for which we get free credits
+  for the first month. Console app development I was already very familiar with.
   </p>
 
     </div>
     </div>
     </section>
 
-    <section>
+    <section id="a08-report">
       <div class = "card white">
         <div class = "card-content">
           <span class = "card-title"><h4>S08 - Web application performance</h4></span>
@@ -352,10 +352,10 @@ finishing I deployed using azure.
         The performance of this website is low. Even with a score of 79 in using best
         practices we can see that this doesn't have much of an effect on performance.
         Focusing on the desktop results, all performance metrics except for first
-        contenful paint (FCP) took a long time, specifically with 18.9s time to
+        contentful paint (FCP) took a long time, specifically with 18.9s time to
         interactive (TTI) and a first input delay (FID) of 51ms. With websites needing
         to load faster than 10s the TTI of 18.9s makes this website slow to load not
-        only on dekstops but also on mobiles.
+        only on desktops but also on mobiles.
         <br>The slow loading times seem to be linked
         to the browser waiting to load images before finishing loading the rest of tasks
         causing a bottle-neck. This can be fixed by deferring images to be loaded only
@@ -393,7 +393,7 @@ finishing I deployed using azure.
         resources. <br> From the diagnostics, the most time was spent evaluating scripts,
         which if they contain errors can make the loading of the website very slow as is
         the case here. Code from a third-party video platform also caused main-Thread
-        blocking which contributed to the slow FID. <br> Some opportunites for
+        blocking which contributed to the slow FID. <br> Some opportunities for
         improvement are deferring image loading like mentioned above for regering.se,
         removing unused stylesheets and making sure that third-party code is not
         producing errors that block essential resources from loading.
@@ -418,16 +418,16 @@ finishing I deployed using azure.
     </div>
     </section>
 
-    <section>
-      <div class = "card white">
+    <section id="a09-report">
+        <div class = "card white">
         <div class = "card-content">
           <span class = "card-title"><h4>S09 - Web security and OWASP</h4></span>
           <hr>
       <p><h5> Security Issue 1: Injection</h5>
-        Website using SQL or NoSQl that allow the user to input string to manipulate
+        Website using SQL or NoSQL that allow the user to input string to manipulate
   the queries used to access databases are particularly vulnerable to this type
   of attacks. From my own experience while building the solution for assignment
-  5, i had to make sure that while allowing the user to input their own search
+  5, I had to make sure that while allowing the user to input their own search
   strings to find a book in the Book Database, I needed to escape any special
   characters that could potentially alter the reliability of the SQL query.
   After some research, I decided to use wildcard in my SQL query to compile the
@@ -456,7 +456,7 @@ finishing I deployed using azure.
         code at the same time they released a fix for it.
         The companies affected, including Equifax, needed to update every app
         that ran on the struts platform individually.
-        But it didn't... releasing the credit card records of millions of americans.
+        But it didn't... releasing the credit card records of millions of Americans.
         The vulnerability of Apache Struts allowed for Remote Code Execution...
       </p>
 
@@ -491,52 +491,61 @@ finishing I deployed using azure.
     </section>
 
     <section id="a10-report">
-        <div class = "card white">
-          <div class = "card-content">
-            <span class = "card-title"><h4>S10 - Project Individual Reflection</h4></span>
-            <hr>
+      <div class = "card white">
+        <div class = "card-content">
+          <span class = "card-title"><h4>S10 - Project Individual Reflection</h4></span>
+          <hr>
 
-        <p> <h5>General Implementation</h5> The project took a backseat for a while
-          and we started it a bit late due to the thesis taking so much of our time.
+      <p> <h5>General Implementation</h5>       We knew very well from the beginning what we wanted to do, so we implemented
+          the front-end of the registration and login pages quite rapidly.
+          Then the project took a backseat for a while due to the thesis taking so much of our time.
           We decided to choose a project idea using the tech that we learned during
-          the course, being specific to pick the ones we felt most comfortable with.
-          Php was a straightforward solution to a simple yet complicated idea. <br>
-          We faced the biggest issues when dealing with the interaction between JavaScript,
+          the course, being specific to pick the ones we felt most comfortable with
+          to be as productive as possible. <br>
+          PHP was a straightforward solution to a simple yet complicated idea. <br>
+          After having set up the backend for the login and registration, we designed
+          the database with the api requests very much in mind. <br> After we had the main
+          requirements down, we moved on to less critical features, which is where
+          we faced the biggest issues, specifically when dealing with the interaction between JavaScript,
           PHP, Python and HTML/CSS all in one, while implementing the visualization of
-          our collected data. <br>
+          our collected data. At which point we were pair-programming a lot through Slack which
+          contributed to us not having any technical set-backs that took us any longer than 12 hours to resolve.
+          <br> Both of us live far away from each other while also working part-time so,
+          quite honestly, our biggest challenge was figuring out our time management. <br>
           All in all, the project went very well, even if a bit ambitious. But considering
           the circumstances of the world and the fact that this course runs alongside
-          the thesis project, I think it went extremely well. Ideally though,
-          the web development and cloud development courses should run alongside each
+          the thesis project, I think everything went smoothly and worked out wonderfully.
+
+      </p>
+      <p><h5> Thoughts on the Course</h5> Going into this course I was not a fan
+        of front-end development. I had a bitter taste from previous courses where
+        I spent hours trying to make a left-menu-pane be the right shade of transparent with
+        the right millisecond delay in animation, something I never look forward to doing again
+        and appreciate a lot more now when I come across it. <br>
+        This course turned me around, not a full 180 but a good 90 degrees on this.
+        Learning about templating and all the libraries that facilitate and expediate
+        the process of making a website look professional and polished was extremely satisfying.
+        Every week I learned something new and most importantly, RELEVANT to today's
+        industry. <br> Apart from actually learning to code,I would consider this course,
+        along with both Data Communication and Algorithms & Discrete Structures,
+        one of the most valuable. If we had done this sooner many of us could have
+        gained experience with part time jobs in the industry, I can't understand why it was left for last. <br>
+        I have already recommended this course to family members. <br>
+          Ideally though, the web development and cloud development courses should run alongside each
           other, and the second period of the spring semester be left completely for the thesis. I am sure that
           if this were the case, everyone would do much better not just on this project
           but on all three courses.
 
-        </p>
-        <p><h5> Thoughts on the Course</h5> Going into this course I was not a fan
-          of front-end development. I had a bitter taste from previous courses where
-          I spent hours trying to make a left-menu-pane be the right shade of transparent with
-          the right millisecond delay in animation, something I never look forward to doing again
-          and appreciate a lot more now when I come across it. <br>
-          This course turned me, not a full 180 but a good 90 degrees around on this.
-          Learning about templating and all the libraries that facilitate and expediate
-          the process of making a website look professional and polished was extremely satisfying.
-          Every week I learned something new and most importantly, RELEVANT to today's
-          industry. <br> Apart from actually learning to code,I would consider this course,
-          along with both Data Communication and Algorithms & Discrete Structures,
-          one of the most valuable. If we had done this sooner many of us could have
-          gained experience with part time jobs in the industry, I can't understand why it was left for last.
-          I have already recommended this course to family members.
+
+      </P>
+      <p><h5>TIL</h5> PHP, ASP.NET, Analyzing website performance, Templating, Node.js, API design and implementation. </p>
 
 
-        </P>
-        <p><h5>TIL</h5> PHP, ASP.NET, Analyzing website performance, Templating, Node.js -. </p>
+        </div>
+        </div>
 
+    </section>
 
-          </div>
-          </div>
-
-      </section>
 
 
   </article>
