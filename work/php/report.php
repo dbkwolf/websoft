@@ -490,11 +490,53 @@ finishing I deployed using azure.
     </div>
     </section>
 
-    <section>
-      <h5>S10</h5>
-      <p>Here is the text for this section.</p>
-    </section>
+    <section id="a10-report">
+        <div class = "card white">
+          <div class = "card-content">
+            <span class = "card-title"><h4>S10 - Project Individual Reflection</h4></span>
+            <hr>
 
+        <p> <h5>General Implementation</h5> The project took a backseat for a while
+          and we started it a bit late due to the thesis taking so much of our time.
+          We decided to choose a project idea using the tech that we learned during
+          the course, being specific to pick the ones we felt most comfortable with.
+          Php was a straightforward solution to a simple yet complicated idea. <br>
+          We faced the biggest issues when dealing with the interaction between JavaScript,
+          PHP, Python and HTML/CSS all in one, while implementing the visualization of
+          our collected data. <br>
+          All in all, the project went very well, even if a bit ambitious. But considering
+          the circumstances of the world and the fact that this course runs alongside
+          the thesis project, I think it went extremely well. Ideally though,
+          the web development and cloud development courses should run alongside each
+          other, and the second period of the spring semester be left completely for the thesis. I am sure that
+          if this were the case, everyone would do much better not just on this project
+          but on all three courses.
+
+        </p>
+        <p><h5> Thoughts on the Course</h5> Going into this course I was not a fan
+          of front-end development. I had a bitter taste from previous courses where
+          I spent hours trying to make a left-menu-pane be the right shade of transparent with
+          the right millisecond delay in animation, something I never look forward to doing again
+          and appreciate a lot more now when I come across it. <br>
+          This course turned me, not a full 180 but a good 90 degrees around on this.
+          Learning about templating and all the libraries that facilitate and expediate
+          the process of making a website look professional and polished was extremely satisfying.
+          Every week I learned something new and most importantly, RELEVANT to today's
+          industry. <br> Apart from actually learning to code,I would consider this course,
+          along with both Data Communication and Algorithms & Discrete Structures,
+          one of the most valuable. If we had done this sooner many of us could have
+          gained experience with part time jobs in the industry, I can't understand why it was left for last.
+          I have already recommended this course to family members.
+
+
+        </P>
+        <p><h5>TIL</h5> PHP, ASP.NET, Analyzing website performance, Templating, Node.js -. </p>
+
+
+          </div>
+          </div>
+
+      </section>
 
 
   </article>
